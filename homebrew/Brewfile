@@ -12,6 +12,7 @@ brew "nginx"
 brew "telnet"
 brew "vte3"
 brew "wget"
+brew "yarn"
 
 cask "authy"
 cask "vlc"
