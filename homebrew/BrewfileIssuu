@@ -1,0 +1,12 @@
+# Issuu
+tap "derailed/k9s"
+brew "asdf"
+brew "postgresql@14"
+brew "kubectx"
+brew "kubernetes-cli@1.22"
+brew "envconsul"
+cask "dbeaver-community"
+cask "1password"
+cask "loom"
+cask "tailscale"
+cask "zoom"

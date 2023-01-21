@@ -1,0 +1,5 @@
+# Mac
+cask "rectangle"
+cask "alt-tab"
+cask "maccy"
+cask "iterm2"
