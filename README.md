@@ -1,3 +1,6 @@
 # My personal dotfiles
 
-(under development...)
+Just execute install.sh
+
+- Install Homebrew and the packages
+- Add ZSH config 
