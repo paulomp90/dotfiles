@@ -1,0 +1,23 @@
+# Based/copied from https://github.com/ChristianChiarulli/Machfiles
+
+# Function to source files if they exist
+function zsh_add_file() {
+    if [ -f $1 ]; then
+        source $1
+    else
+        print "404: $1 not found."
+    fi
+}
+
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+
+    if [ -d "$ZSHPATH/plugins/$PLUGIN_NAME" ]; then 
+        # For plugins
+        zsh_add_file "$ZSHPATH/plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        zsh_add_file "$ZSHPATH/plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZSHPATH/plugins/$PLUGIN_NAME"
+    fi
+
+}
