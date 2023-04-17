@@ -1,8 +1,12 @@
 #!/usr/bin/env zsh
 
 # For a full list of active aliases, run `alias`.
+
+
 alias zshconfig="code ~/.zshrc"
 alias zshs="source ~/.zshrc"
+
+alias nvm="fnm"
 alias cat="bat"
 alias ls='exa -lah'
 alias ..='cd ..'

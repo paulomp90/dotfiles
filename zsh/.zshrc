@@ -34,6 +34,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
 
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$PATH:$HOME/.yarn/bin"
+
 # FZF
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
