@@ -24,4 +24,5 @@ rm -rf $HOME/.zshrc
 rm -rf $HOME/.zshenv
 
 ln -s $ZSHPATH/.zshenv ~/.zshenv &&
-ln -s $ZSHPATH/.zshrc ~/.zshrc
+ln -s $ZSHPATH/.zshrc ~/.zshrc &&
+ln -s $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig

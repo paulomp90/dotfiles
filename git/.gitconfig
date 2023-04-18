@@ -1,0 +1,53 @@
+[user]
+	name = Paulo Pereira
+	email = 
+
+[alias]
+	br = !git --no-pager branch
+	ci = commit
+	co = checkout
+	# pretty log
+	lg = log --graph --pretty='format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	rb = rebase
+	st = status
+
+[color]
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+
+
+
+[diff]
+	# Use better, descriptive initials (c, i, w) instead of a/b.
+	mnemonicPrefix = true
+	# Show renames/moves as such
+	renames = true
+
+[format]
+	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[pager]
+	branch = false
+	stash = false
+
+[push]
+	default = current
+
+[rerere]
+	# Update the index with the resulting content
+	autoupdate = true
+	# Activate recording of resolved conflicts
+	enabled = true
+
+[status]
+	showUntrackedFiles = all
+
+[fetch]
+	prune = true

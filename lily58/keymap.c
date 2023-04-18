@@ -23,6 +23,7 @@ enum layer_number {
     _LOWER,
     _RAISE,
     _ADJUST,
+    _GAME
 };
 
 /* tap dance shifts */
@@ -40,6 +41,12 @@ typedef enum {
 } td_state_t;
 
 enum { LEFT_SHIFT = 0, RIGHT_SHIFT = 1 };
+
+// Backlight timeout feature
+// #define BACKLIGHT_TIMEOUT 2    // in minutes
+// static uint16_t idle_timer = 0;
+// static uint8_t halfmin_counter = 0;
+// static bool old_backlight_level = true;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -71,9 +78,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |  F1  |      |      |      |      |      |                    | PgUp | HOME |  Up  | END  |  ºª  | F12  |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------.    ,-------| PgDn | Left | Down |Right |  ~^  | DEL  |
+    * |      |      |      |  <<  |  >|| |  >>  |-------.    ,-------| PgDn | Left | Down |Right |  ~^  | DEL  |
     * |------+------+------+------+------+------|  <>   |    |  ´`   |------+------+------+------+------+------|
-    * |      |      |      |  <<  |  >|| |  >>  |-------|    |-------|      | Vol+ | Vol- | Mute |  \|  |      |
+    * |      |      |      | Vol+ | Vol- | Mute |-------|    |-------|      |      |      |      |  \|  |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -82,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER] = LAYOUT(
         _______,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                 KC_F7,     KC_F8, KC_F9,  KC_F10,  KC_F11, _______,  
           KC_F1, _______, _______, _______, _______, _______,                 KC_PGUP, KC_HOME, KC_UP,  KC_END, KC_LBRC,  KC_F12,
-        _______, _______, _______, _______, _______, _______,                 KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_QUOT, KC_DEL,
-        _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,   _______, _______, _______, KC_VOLU,  KC_VOLD, KC_MUTE, KC_BSLS, _______,
+        _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_QUOT, KC_DEL,
+        _______, _______, _______, KC_VOLU, KC_VOLD, KC_MUTE,   _______, _______, _______, _______,  _______, _______, KC_BSLS, _______,
                                     _______, _______, _______,  _______, _______,  _______, _______, _______
     ),
 
@@ -95,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |   6  |   7  |  8   |  9   |  0   |-------.    ,-------| PgDn | Left | Down |Right |  ~^  |      |
     * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-    * |      |      |      |  <<  |  >|| |  >>  |-------|    |-------|      | Vol+ | Vol- | Mute |  \|  |      |
+    * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |  \|  |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -105,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,
         _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                   KC_PGUP, KC_HOME, KC_UP,  KC_END, KC_LBRC, _______,
         _______,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,                   KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_QUOT, _______,
-        _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, KC_VOLU,  KC_VOLD, KC_MUTE, KC_BSLS, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, KC_BSLS, _______,
                                     _______, _______, _______, _______, _______,  _______, _______, _______
     ),   
 
@@ -115,9 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |RGB ON| HUE+ | SAT+ | VAL+ |      | BRG+ |-------.    ,-------|      |      |      |      |      |      |
+    * |RGB ON| HUE+ | SAT+ | VAL+ |      | GAME |-------.    ,-------| BRG+ |      |      |      |      |      |
     * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-    * | MODE | HUE- | SAT- | VAL- |      | BRG- |-------|    |-------|      |      |      |      |      |      |
+    * | MODE | HUE- | SAT- | VAL- |      |      |-------|    |-------| BRG- |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt | 
     *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -127,10 +134,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, KC_BRIU,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, TG(_GAME),                 KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                     _______, _______, _______, _______, _______,  _______, _______, _______
-    )
+    ),
+
+    /* GAME
+    * Make shifts default behaviour
+    * GUI <> Space
+    */
+    [_GAME] = LAYOUT(
+        _______,    _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+        _______,    _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+        KC_LSFT, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+        _______,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RSFT,
+                             _______,  KC_SPC, _______, KC_LGUI, _______, _______, _______, _______
+    ),
+
 };
 
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
@@ -142,15 +162,40 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 // When you add source files to SRC in rules.mk, you can use functions.
-const char *read_layer_state(void);
+// const char *read_layer_state(void);
 const char *read_logo(void);
 void        set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
 const char *read_keylogs(void);
 
+void oled_render_layer_state(void) {
+    oled_write_P(PSTR("Layer: "), false);
+    switch (get_highest_layer(layer_state)) {
+        case 0:
+            oled_write_ln_P(PSTR("Default"), false);
+            break;
+        case 1:
+            oled_write_ln_P(PSTR("Lower"), false);
+            break;
+        case 2:
+            oled_write_ln_P(PSTR("Raise"), false);
+            break;
+        case 3:
+            oled_write_ln_P(PSTR("Adjust"), false);
+            break;
+        case 4:
+            oled_write_ln_P(PSTR("Game"), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("Unknown"), false);
+            break;
+    }
+}
+
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        oled_write_ln(read_layer_state(), false);
+        // oled_write_ln(read_layer_state(), false);
+        oled_render_layer_state();
         oled_write_ln(read_keylog(), false);
         oled_write_ln(read_keylogs(), false);
     } else {
@@ -163,13 +208,40 @@ bool oled_task_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-    #ifdef OLED_ENABLE
-        set_keylog(keycode, record);
-    #endif
+        #ifdef OLED_ENABLE
+            set_keylog(keycode, record);
+        #endif
+        // #ifdef RGBLIGHT_ENABLE
+        //     if (old_backlight_level == false) {
+        //         old_backlight_level = rgblight_is_enabled();
+        //     } else {
+        //         rgblight_enable();
+        //     } 
+        // #endif
+        // idle_timer = timer_read();
+        // halfmin_counter = 0;
     }
 
     return true;
 }
+
+// void matrix_scan_user(void) {
+//     // idle_timer needs to be set one time
+//     if (idle_timer == 0) idle_timer = timer_read();
+
+//     #ifdef RGBLIGHT_ENABLE
+//         if (timer_elapsed(idle_timer) > 30000) {
+//             halfmin_counter++;
+//             idle_timer = timer_read();
+//         }
+
+//         if (halfmin_counter >= BACKLIGHT_TIMEOUT * 2) {
+//             old_backlight_level = rgblight_is_enabled();
+//             backlight_set(0);
+//             halfmin_counter = 0;
+//         }
+//     #endif
+// }
 
 /* Tap dance shifts */
 td_state_t cur_dance(tap_dance_state_t *state) {
