@@ -25,8 +25,17 @@ alias internal='cd ~/Projects/internal'
 alias template='cd ~/Projects/template/js-lib-template'
 alias teams='cd ~/Projects/product/product-teams-management'
 alias silk='cd ~/Projects/internal/internal-design-system'
-alias rebar='~/Users/paulopereira/Projects/backend/rebar'
 
 alias per='cd ~/Projects/personal'
 alias df='cd ~/Projects/personal/dotfiles'
 alias sl='cd ~/Projects/personal/superloyal/product-superloyal'
+
+# function kp() {
+#     if [ $0 ]; then
+#         kill $(lsof -ti:$0)
+#         print "Yeahhhh"
+#     else
+#         print "nada desta bida!"
+#     fi
+# }
+

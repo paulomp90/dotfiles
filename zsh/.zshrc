@@ -6,21 +6,26 @@ export LANG=en_US.UTF-8
 # Turn off all beeps
 unsetopt BEEP
 
-# Starship config file
-export STARSHIP_CONFIG="$ZSHPATH/starship.toml"
-
 # History
 setopt SHARE_HISTORY             # Share history between all sessions.
 
 eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(fnm env --use-on-cd)"
-eval "$(starship init zsh)"
 
 # Completions
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 autoload -U compinit; compinit
+
+# pure
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+prompt pure
+
+PURE_PROMPT_SYMBOL='➜'
+zstyle ':prompt:pure:prompt:success' color green
+zstyle :prompt:pure:git:stash show yes
 
 
 # Useful Functions
