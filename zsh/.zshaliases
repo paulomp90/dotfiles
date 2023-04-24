@@ -2,19 +2,35 @@
 
 # For a full list of active aliases, run `alias`.
 
+alias reload="source ~/.zshrc"
 
-alias zshconfig="code ~/.zshrc"
-alias zshs="source ~/.zshrc"
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ~='cd ~'
 
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+alias c='clear'
 alias nvm="fnm"
 alias cat="bat"
-alias ls='exa -lah'
-alias ..='cd ..'
+alias ls='exa --all --group-directories-first'
+alias ll='exa --long --all --group-directories-first'
+alias tree='exa --tree'
+
+
 alias which-command=whence
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias serve='python3 -m http.server'
 alias brewu='brew update && brew upgrade && brew cleanup'
+alias mcd=mcd
+alias cl=cl
+
 #alias kill8000='kill $(lsof -i:8000 -t)'
+
 
 # Git
 alias dbr='git branch --merged | grep -v "main\|master" | xargs git branch -D'
@@ -22,20 +38,9 @@ alias dbr='git branch --merged | grep -v "main\|master" | xargs git branch -D'
 # Folders alias
 alias product='cd ~/Projects/product'
 alias internal='cd ~/Projects/internal'
+alias per='cd ~/Projects/personal'
 alias template='cd ~/Projects/template/js-lib-template'
 alias teams='cd ~/Projects/product/product-teams-management'
 alias silk='cd ~/Projects/internal/internal-design-system'
-
-alias per='cd ~/Projects/personal'
-alias df='cd ~/Projects/personal/dotfiles'
+alias dot='cd ~/Projects/personal/dotfiles'
 alias sl='cd ~/Projects/personal/superloyal/product-superloyal'
-
-# function kp() {
-#     if [ $0 ]; then
-#         kill $(lsof -ti:$0)
-#         print "Yeahhhh"
-#     else
-#         print "nada desta bida!"
-#     fi
-# }
-

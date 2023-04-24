@@ -1,0 +1,26 @@
+function cl() {
+    DIR="$*";
+	# if no DIR given, go home
+	if [ $# -lt 1 ]; then 
+		DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+    # use your preferred ls command
+	ls
+}
+
+function mcd() {
+    mkdir -p $1
+    cd $1
+}
+
+
+# function kp() {
+#     if [ $0 ]; then
+#         kill $(lsof -ti:$0)
+#         print "Yeahhhh"
+#     else
+#         print "nada desta bida!"
+#     fi
+# }
+
