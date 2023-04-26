@@ -4,15 +4,12 @@
 
 alias reload="source ~/.zshrc"
 
+alias pwd="pwd && pwd | pbcopy"
+
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ~='cd ~'
-
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
 
 alias c='clear'
 alias nvm="fnm"

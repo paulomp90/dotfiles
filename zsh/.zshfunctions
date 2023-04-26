@@ -4,16 +4,15 @@ function cl() {
 	if [ $# -lt 1 ]; then 
 		DIR=$HOME;
     fi;
-    builtin cd "${DIR}" && \
+    builtin cd "${DIR}";
     # use your preferred ls command
-	ls
+	exa --all --group-directories-first
 }
 
 function mcd() {
-    mkdir -p $1
+    mkdir -p $1;
     cd $1
 }
-
 
 # function kp() {
 #     if [ $0 ]; then
@@ -23,4 +22,3 @@ function mcd() {
 #         print "nada desta bida!"
 #     fi
 # }
-
