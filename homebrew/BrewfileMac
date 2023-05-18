@@ -1,8 +1,5 @@
-# Mac
 tap "osx-cross/arm"
 tap "osx-cross/avr"
-cask "rectangle"
 cask "alt-tab"
-cask "maccy"
 cask "iterm2"
-cask "qmk-toolbox"
+cask "raycast"

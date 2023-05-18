@@ -14,6 +14,17 @@ function mcd() {
     cd $1
 }
 
+function brew_update() {
+    brew update;
+    print "BREW - Update done"
+    brew upgrade;
+    print "BREW - Upgrade done"
+    brew upgrade --cask;
+    print "BREW - Upgrade cask done"
+    brew cleanup;
+    print "BREW - Cleanup done"
+}
+
 # function kp() {
 #     if [ $0 ]; then
 #         kill $(lsof -ti:$0)

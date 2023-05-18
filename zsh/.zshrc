@@ -56,3 +56,5 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 # fzf with preview
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :100 {}'"
+
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
