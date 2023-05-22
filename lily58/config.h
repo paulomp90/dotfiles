@@ -16,8 +16,6 @@
 
 #pragma once
 
-#define MASTER_LEFT
 
 #define QUICK_TAP_TERM 0
-#define TAPPING_TERM 150
-#define TAP_CODE_DELAY 10
+#define TAPPING_TERM 125
