@@ -1,0 +1,60 @@
+{
+    // Editor
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+      
+    "editor.fontSize": 14,
+    "editor.fontFamily": "JetBrains Mono, Fira Code, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "Fira Code, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+    // "editor.letterSpacing": 0.2,
+    "editor.lineHeight": 20,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorWidth": 2,
+    // "editor.cursorStyle": "line",
+    // "editor.autoClosingBrackets": "always",
+
+    
+    //Terminal
+    "terminal.integrated.fontFamily": "Fira Code, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.altClickMovesCursor": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "iterm.app",
+    
+
+    // Explorer
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders": false,
+
+    // Unlabeled
+    "security.workspace.trust.untrustedFiles": "open",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "debug.toolBarLocation": "docked",
+    "git.mergeEditor": true,
+    "workbench.iconTheme": "vscode-great-icons",
+    "workbench.editor.showTabs": true,
+    "workbench.editor.tabSizing": "fit",
+
+    // CodeSnap
+    "codesnap.shutterAction": "copy",
+
+    "turboConsoleLog.addSemicolonInTheEnd": true,
+    "turboConsoleLog.insertEmptyLineAfterLogMessage": true,
+    "workbench.colorCustomizations": {
+        // "editor.lineHighlightBackground": "#313741",
+        "editor.lineHighlightBorder": "#282c34",
+        "[doom-one]": {
+            "statusBar.debuggingBackground": "#2257A0"
+        }
+    },
+    "typeChallenges.workspaceFolder": "/Users/paulopereira/.typeChallenges"
+}
