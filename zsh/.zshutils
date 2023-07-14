@@ -25,11 +25,15 @@ function brew_update() {
     print "BREW - Cleanup done"
 }
 
-# function kp() {
-#     if [ $0 ]; then
-#         kill $(lsof -ti:$0)
-#         print "Yeahhhh"
-#     else
-#         print "nada desta bida!"
-#     fi
-# }
+function pid() {
+    lsof -ti:$1
+}
+
+function kp() {
+    if [ $1 ]; then
+        kill $(lsof -ti:$1)
+        print "hasta la vista, baby"
+    else
+        print "no arg!"
+    fi
+}

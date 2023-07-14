@@ -26,8 +26,8 @@ alias brewu='brew update && brew upgrade && brew cleanup'
 alias mcd=mcd
 alias cl=cl
 alias brewu=brew_update
-
-#alias kill8000='kill $(lsof -i:8000 -t)'
+alias kp=kp
+alias pid='pid'
 
 
 # Git

@@ -22,8 +22,6 @@
 	changed = yellow
 	untracked = cyan
 
-
-
 [diff]
 	# Use better, descriptive initials (c, i, w) instead of a/b.
 	mnemonicPrefix = true

@@ -31,7 +31,7 @@ zstyle :prompt:pure:git:stash show yes
 # Useful Functions
 source "$ZSHPATH/zsh-functions"
 
-zsh_add_file "$ZSHPATH/.zshfunctions"
+zsh_add_file "$ZSHPATH/.zshutils"
 zsh_add_file "$ZSHPATH/.zshaliases"
 
 # Plugins
