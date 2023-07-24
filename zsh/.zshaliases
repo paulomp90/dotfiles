@@ -36,7 +36,7 @@ alias ga='git add'
 alias gci='git ci -m'
 alias gciam='git ci --amend'
 
-alias gco='git co -b'
+alias gco='git co'
 
 alias gps='git push'
 alias gpf='git push -f'
