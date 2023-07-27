@@ -15,38 +15,14 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keymap_portuguese.h"
-#include "features/custom_shift_keys.h"
 
 enum layer_number {
     _QWERTY = 0,
     _LOWER,
     _RAISE,
     _ADJUST,
-    _GAME
+    _GAME,
 };
-
-/* tap dance shifts */
-typedef struct {
-    bool is_press_action;
-    int  state;
-} tap;
-
-typedef enum {
-    TD_NONE,
-    TD_UNKNOWN,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_DOUBLE_TAP
-} td_state_t;
-
-enum { LEFT_SHIFT = 0, RIGHT_SHIFT = 1 };
-
-// Backlight timeout feature
-// #define BACKLIGHT_TIMEOUT 2    // in minutes
-// static uint16_t idle_timer = 0;
-// static uint8_t halfmin_counter = 0;
-// static bool old_backlight_level = true;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -57,8 +33,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  +*  |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |LShift|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   Ç  | BACK |
-    * |------+------+------+------+------+------|  <>   |    |  ´`   |------+------+------+------+------+------|
-    * |LCTRL |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  ,;  |   .: |  _-  |Shift|
+    * |------+------+------+------+------+------| GAME  |    |       |------+------+------+------+------+------|
+    * |LCTRL |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  ,;  |   .: |  _-  |Shift |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -67,30 +43,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
         KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
         KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_EQL,
-        TD(LEFT_SHIFT),  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,              KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_BSPC,
-        KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_GRV,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  TD(RIGHT_SHIFT),
+        KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_BSPC,
+        KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, TG(_GAME),  XXXXXXX,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
                             KC_LALT, KC_LGUI, TL_LOWR, KC_SPC,   KC_ENT,   TL_UPPR,  KC_RGUI, KC_RALT
     ),
 
     /* LOWER
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  |  F11 |      |
+    * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  |  F11 | F12  |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |  F1  |      |      |      |      |      |                    | PgUp | PgDn | HOME | END  |  ºª  | F12  |
+    * |      |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |  <<  |  >|| |  >>  |-------.    ,-------| Left | Down |  Up  |Right |  ~^  | DEL  |
-    * |------+------+------+------+------+------|  <>   |    |  ´`   |------+------+------+------+------+------|
-    * |      |      |      | Vol+ | Vol- | Mute |-------|    |-------|      |      |      |      |  \|  |      |
+    * |      |   ´  |  `   |  ~   |  ^   |      |-------.    ,-------|   <  |   >  |   [  |   ]  |   '  | DEL  |
+    * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+    * |      |      |      |  <<  |  >|| |  >>  |-------|    |-------|      |      |   {  |   }  |   ?  |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
     *                   `-------------------''-------'           '------''--------------------'
     */
     [_LOWER] = LAYOUT(
-        _______,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                 KC_F7,     KC_F8, KC_F9,  KC_F10,  KC_F11, _______,  
-          KC_F1, _______, _______, _______, _______, _______,                 KC_PGUP, KC_PGDN, KC_HOME, KC_END, KC_LBRC, KC_F12,
-        _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_QUOT, KC_DEL,
-        _______, _______, _______, KC_VOLU, KC_VOLD, KC_MUTE,   _______, _______, _______, _______,  _______, _______, KC_BSLS, _______,
+          KC_F1,   KC_F2,         KC_F3,   KC_F4,         KC_F5,   KC_F6,                       KC_F7,        KC_F8,      KC_F9,     KC_F10,        KC_F11,  KC_F12,  
+        _______,    KC_1,          KC_2,    KC_3,          KC_4,    KC_5,                        KC_6,         KC_7,       KC_8,       KC_9,          KC_0,  _______,
+        _______, KC_RBRC, LSFT(KC_RBRC), KC_QUOT, LSFT(KC_QUOT), _______,                      KC_GRV, LSFT(KC_GRV), LALT(KC_8), LALT(KC_9),       KC_MINS,  KC_DEL,
+        _______, KC_LBRC, LALT(KC_2), LALT(KC_3), KC_BSLS, LSFT(KC_BSLS),   _______, _______, _______,      _______,  LSA(KC_8),  LSA(KC_9), LSFT(KC_MINS), _______,
                                     _______, _______, _______,  _______, _______,  _______, _______, _______
     ),
 
@@ -98,21 +74,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |   1  |   2  |  3   |  4   |  5   |                    | PgUp | PgDn | HOME | END  |  ºª  |      |
+    * |      |      |      |      |      |      |                    |      |      |  Up  |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |   6  |   7  |  8   |  9   |  0   |-------.    ,-------| Left | Down |  Up  |Right |  ~^  |      |
+    * |      |      |  SLU | PGUP | HOME |      |-------.    ,-------|  SWL | Left | Down |Right | SWR  |      |
     * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |  \|  |      |
+    * |      |      |  SLD | PGDN | END  |      |-------|    |-------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
     *                   `-------------------''-------'           '------''--------------------'
     */
     [_RAISE] = LAYOUT(
-        _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,
-        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                   KC_PGUP, KC_PGDN, KC_HOME, KC_END, KC_LBRC, _______,
-        _______,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,                   KC_LEFT, KC_DOWN,  KC_UP, KC_RGHT, KC_QUOT, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, KC_BSLS, _______,
+        XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,      XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX,   KC_UP,  XXXXXXX,      XXXXXXX, _______,
+        _______,    KC_6,   LSFT(KC_UP), KC_PGUP, KC_HOME, XXXXXXX,                   LSA(KC_LEFT), KC_LEFT, KC_DOWN,  KC_RGHT, LSA(KC_RGHT), _______,
+        _______, _______, LSFT(KC_DOWN), KC_PGDN,  KC_END, KC_MNXT, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,      XXXXXXX, _______,
                                     _______, _______, _______, _______, _______,  _______, _______, _______
     ),   
 
@@ -120,44 +96,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+    * |      |      |      |      |      |      |                    |      | VOL+ | MUTE | VOL- |      |      |
+    * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+    * |RGB ON| HUE+ | SAT+ | VAL+ |      | BRG+ |-------.    ,-------|      |  <<  |  >|| |  >>  |      |      |
+    * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+    * | MODE | HUE- | SAT- | VAL- |      | BRG- |-------|    |-------|      |      |      |      |      |      |
+    * `-----------------------------------------/       /     \      \-----------------------------------------'
+    *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt | 
+    *                   |      |      |      |/       /         \      \ |      |      |      |
+    *                   `----------------------------'           '------''--------------------'         
+    */
+
+    [_ADJUST] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_VOLU, KC_MUTE, KC_VOLD, XXXXXXX, XXXXXXX,
+        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, KC_BRIU,                   XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                    _______, _______, _______, _______, _______,  _______, _______, _______
+    ),
+
+        /* ADJUST
+    * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |RGB ON| HUE+ | SAT+ | VAL+ |      | GAME |-------.    ,-------| BRG+ |      |      |      |      |      |
+    * |      |      |      |      |      |      |                    |      | VOL+ | MUTE | VOL- |      |      |
+    * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+    * |RGB ON| HUE+ | SAT+ | VAL+ |      | BRG+ |-------.    ,-------|      |  <<  |  >|| |  >>  |      |      |
     * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-    * | MODE | HUE- | SAT- | VAL- |      |      |-------|    |-------| BRG- |      |      |      |      |      |
+    * | MODE | HUE- | SAT- | VAL- |      | BRG- |-------|    |-------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt | 
     *                   |      |      |      |/       /         \      \ |      |      |      |
     *                   `----------------------------'           '------''--------------------'
     */
 
-    [_ADJUST] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, TG(_GAME),                 KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                    _______, _______, _______, _______, _______,  _______, _______, _______
-    ),
-
-    /* GAME
-    * Make shifts default behaviour
-    * GUI <> Space
-    */
     [_GAME] = LAYOUT(
-        _______,    _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-        _______,    _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-        KC_LSFT, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-        _______,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RSFT,
-                             _______,  KC_SPC, _______, KC_LGUI, _______, _______, _______, _______
-    ),
-
+        _______, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                    _______, KC_SPC, _______, KC_LGUI, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    )
 };
 
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) return OLED_ROTATION_180; // flips the display 180 degrees if offhand
+    if (!is_keyboard_master()) return OLED_ROTATION_270; // flips the display 90 degrees if offhand
     return rotation;
 }
 
@@ -192,145 +178,52 @@ void oled_render_layer_state(void) {
     }
 }
 
+void oled_render_logo(void) {
+    static const char PROGMEM mb_logo[] = {
+// 'beard2', 32x100px
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x04, 0x1e, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfc, 0x3c, 0x0c, 
+0x0c, 0x3c, 0xfc, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0x1e, 0x06, 0x00, 
+0xf8, 0xf0, 0x00, 0x00, 0x01, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x81, 0xc0, 0xc0, 0xc0, 
+0xc0, 0xc0, 0xc0, 0xc1, 0x83, 0x83, 0x03, 0x03, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00, 0xe0, 0xf8, 
+0x03, 0x3f, 0xff, 0xfc, 0xf8, 0xf8, 0xf8, 0xf8, 0xfc, 0xfe, 0xff, 0x87, 0x83, 0xc1, 0xe1, 0xe0, 
+0xe0, 0xe0, 0xe0, 0xc1, 0x83, 0x87, 0xff, 0xfe, 0xfe, 0xfc, 0xf8, 0xf8, 0xfc, 0xfe, 0x3f, 0x07, 
+0x00, 0x00, 0x00, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
+0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x3f, 0x1f, 0x07, 0x03, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x03, 0x07, 0x07, 0x0f, 
+0x0f, 0x0f, 0x0f, 0x07, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+    oled_write_raw_P(mb_logo, sizeof(mb_logo));
+    //oled_set_cursor(oled_max_chars()/2,oled_max_lines()/2);
+    //oled_write_P(PSTR("R2G"), false);
+}
+
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        // oled_write_ln(read_layer_state(), false);
         oled_render_layer_state();
         oled_write_ln(read_keylog(), false);
         oled_write_ln(read_keylogs(), false);
     } else {
-        oled_write(read_logo(), false);
+        // oled_write(read_logo(), false);
+        oled_write_ln_P(PSTR("Mago"), false);
+        oled_render_logo();
     }
     return false;
 }
 #endif // OLED_ENABLE
 
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        #ifdef OLED_ENABLE
-            set_keylog(keycode, record);
-        #endif
-        // #ifdef RGBLIGHT_ENABLE
-        //     if (old_backlight_level == false) {
-        //         old_backlight_level = rgblight_is_enabled();
-        //     } else {
-        //         rgblight_enable();
-        //     } 
-        // #endif
-        // idle_timer = timer_read();
-        // halfmin_counter = 0;
-    }
-
-    return true;
-}
-
-// void matrix_scan_user(void) {
-//     // idle_timer needs to be set one time
-//     if (idle_timer == 0) idle_timer = timer_read();
-
-//     #ifdef RGBLIGHT_ENABLE
-//         if (timer_elapsed(idle_timer) > 30000) {
-//             halfmin_counter++;
-//             idle_timer = timer_read();
-//         }
-
-//         if (halfmin_counter >= BACKLIGHT_TIMEOUT * 2) {
-//             old_backlight_level = rgblight_is_enabled();
-//             backlight_set(0);
-//             halfmin_counter = 0;
-//         }
-//     #endif
-// }
-
-/* Tap dance shifts */
-td_state_t cur_dance(tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (state->interrupted || !state->pressed) {
-            return TD_SINGLE_TAP;
-        } else {
-            return TD_SINGLE_HOLD;
-        }
-    } else if (state->count == 2) {
-        return TD_DOUBLE_TAP;
-    }
-
-    return TD_UNKNOWN;
-}
-
-static tap lshifttap_state = {.is_press_action = true, .state = TD_NONE};
-
-static tap rshifttap_state = {.is_press_action = true, .state = TD_NONE};
-
-void lshift_finished(tap_dance_state_t *state, void *user_data) {
-    lshifttap_state.state = cur_dance(state);
-
-    switch (lshifttap_state.state) {
-        case TD_SINGLE_TAP:
-            register_code16(LALT(KC_LEFT));
-            break;
-        case TD_SINGLE_HOLD:
-            register_code(KC_LSFT);
-            break;
-        case TD_DOUBLE_TAP:
-            tap_code16(LALT(KC_LEFT));
-            register_code16(LALT(KC_LEFT));
-            break;
-        default:
-            break;
-    }
-}
-
-void lshift_reset(tap_dance_state_t *state, void *user_data) {
-    switch (lshifttap_state.state) {
-        case TD_SINGLE_TAP:
-            unregister_code16(LALT(KC_LEFT));
-            break;
-        case TD_SINGLE_HOLD:
-            unregister_code(KC_LSFT);
-            break;
-        case TD_DOUBLE_TAP:
-            unregister_code16(LALT(KC_LEFT));
-            break;
-    }
-    lshifttap_state.state = TD_NONE;
-}
-
-void rshift_finished(tap_dance_state_t *state, void *user_data) {
-    rshifttap_state.state = cur_dance(state);
-
-    switch (rshifttap_state.state) {
-        case TD_SINGLE_TAP:
-            register_code16(LALT(KC_RGHT));
-            break;
-        case TD_SINGLE_HOLD:
-            register_code(KC_RSFT);
-            break;
-        case TD_DOUBLE_TAP:
-            tap_code16(LALT(KC_RGHT));
-            register_code16(LALT(KC_RGHT));
-            break;
-        default:
-            break;
-    }
-}
-
-void rshift_reset(tap_dance_state_t *state, void *user_data) {
-    switch (rshifttap_state.state) {
-        case TD_SINGLE_TAP:
-            unregister_code16(LALT(KC_RGHT));
-            break;
-        case TD_SINGLE_HOLD:
-            unregister_code(KC_RSFT);
-            break;
-        case TD_DOUBLE_TAP:
-            unregister_code16(LALT(KC_RGHT));
-            break;
-    }
-    rshifttap_state.state = TD_NONE;
-}
-
-tap_dance_action_t tap_dance_actions[] = {
-    [LEFT_SHIFT]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lshift_finished, lshift_reset),
-    [RIGHT_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rshift_finished, rshift_reset),
-};
