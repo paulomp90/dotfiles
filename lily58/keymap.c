@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE] = LAYOUT(
         XXXXXXX,       XXXXXXX,      XXXXXXX,       XXXXXXX,      XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX,
         XXXXXXX,       XXXXXXX,      XXXXXXX,   LSFT(KC_UP),      XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX,        XXXXXXX, _______,
-        _______, LGUI(KC_RBRC), LSA(KC_LEFT), LSFT(KC_DOWN), LSA(KC_RGHT), XXXXXXX,                   LALT(KC_LEFT), KC_LEFT, KC_DOWN, KC_RGHT,  LALT(KC_RGHT), _______,
+        _______, SGUI(KC_RBRC), LSA(KC_LEFT), LSFT(KC_DOWN), LSA(KC_RGHT), XXXXXXX,                   LALT(KC_LEFT), KC_LEFT, KC_DOWN, KC_RGHT,  LALT(KC_RGHT), _______,
         _______,       XXXXXXX,      XXXXXXX,       XXXXXXX,      XXXXXXX, XXXXXXX, _______, _______,        KC_HOME, KC_END, XXXXXXX, XXXXXXX,        XXXXXXX, _______,
                                                          _______, _______, _______, _______, _______,  _______, _______, _______
     ),   
