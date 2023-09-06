@@ -20,7 +20,7 @@ LTO_ENABLE = yes
 
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight.
-AUTO_SHIFT_ENABLE = yes
+# AUTO_SHIFT_ENABLE = yes
 
 SRC +=  ./lib/rgb_state_reader.c \
         ./lib/layer_state_reader.c \
