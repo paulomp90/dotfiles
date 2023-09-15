@@ -3,7 +3,7 @@
 # For a full list of active aliases, run `alias`.
 alias reload="source ~/.zshrc"
 
-alias pwd="pwd && pwd | pbcopy"
+# alias pwd="pwd && pwd | pbcopy"
 
 alias ..='cd ..'
 alias ..2='cd ../..'
