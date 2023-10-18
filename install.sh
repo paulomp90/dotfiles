@@ -16,13 +16,13 @@ function brew_install {
 
 [ -x "$(command -v brew > /dev/null 2>&1)" ] && brew_install
 
-source ~/Projects/personal/dotfiles/zsh/.zshenv
-source ~/Projects/personal/dotfiles/zsh/.zshrc
-
-
 rm -rf $HOME/.zshrc
 rm -rf $HOME/.zshenv
+rm -rf $HOME/.gitconfig
 
 ln -s $ZSHPATH/.zshenv ~/.zshenv &&
 ln -s $ZSHPATH/.zshrc ~/.zshrc &&
 ln -s $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig
+
+source ~/Projects/personal/dotfiles/zsh/.zshenv
+source ~/Projects/personal/dotfiles/zsh/.zshrc
