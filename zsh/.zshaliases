@@ -28,29 +28,37 @@ alias brewu=brew_update
 alias kp=kp
 alias pid='pid'
 
-
 # Git
 alias gaa='git add .'
 alias ga='git add'
 
-alias gci='git ci -m'
-alias gciam='git ci --amend'
+alias gc='git commit -m'
+alias gca='git commit --amend'
 
-alias gco='git co'
+alias gco='git checkout'
+alias gcb='git checkout -b'
 
-alias gps='git push'
+alias gp='git push'
 alias gpf='git push -f'
 
-alias gp='git pull'
+alias gl='git pull'
 
 alias gr='git restore'
 alias gra='git restore .'
 alias grs='git restore --staged'
 
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+
+alias gb='git branch'
 alias glg='git lg'
 alias gst='git st'
 
-alias gstha='git stash -u'
+alias gsta='git stash --untracked-files'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
 
 alias dbr='git branch --merged | grep -v "main\|master" | xargs git branch -D'
 
