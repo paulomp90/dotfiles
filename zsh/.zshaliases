@@ -55,7 +55,7 @@ alias gb='git branch'
 alias glg='git lg'
 alias gst='git st'
 
-alias gsta='git stash --untracked-files'
+alias gsta='git stash -u'
 alias gstd='git stash drop'
 alias gstl='git stash list'
 alias gstp='git stash pop'
