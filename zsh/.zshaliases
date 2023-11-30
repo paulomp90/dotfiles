@@ -6,17 +6,16 @@ alias reload="source ~/.zshrc"
 # alias pwd="pwd && pwd | pbcopy"
 
 alias ..='cd ..'
-alias ..2='cd ../..'
-alias ..3='cd ../../..'
+# alias ..2='cd ../..'
+# alias ..3='cd ../../..'
 alias ~='cd ~'
 
 alias c='clear'
 alias nvm="fnm"
 alias cat="bat"
-alias ls='exa --all --group-directories-first'
-alias ll='exa --long --all --group-directories-first'
-alias tree='exa --tree'
-
+alias ls='eza --all --group-directories-first'
+alias ll='eza --long --all --group-directories-first'
+alias tree='eza --tree'
 
 alias which-command=whence
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -61,6 +60,23 @@ alias gstl='git stash list'
 alias gstp='git stash pop'
 
 alias dbr='git branch --merged | grep -v "main\|master" | xargs git branch -D'
+
+# yarn
+alias y="yarn"
+alias ya="yarn add"
+alias yad="yarn add --dev"
+alias yb="yarn build"
+alias ycc="yarn cache clean"
+alias yd="yarn dev"
+alias yln="yarn lint"
+alias yrun="yarn run"
+alias yst="yarn start"
+alias yt="yarn test"
+alias yuc="yarn global upgrade && yarn cache clean"
+alias yv="yarn version"
+alias yw="yarn workspace"
+alias ywf="yarn workspace frontend"
+alias ywb="yarn workspace backend"
 
 # Folders alias
 alias product='cd ~/Projects/product'

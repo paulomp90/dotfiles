@@ -6,7 +6,7 @@ function cl() {
     fi;
     builtin cd "${DIR}";
     # use your preferred ls command
-	exa --all --group-directories-first
+	eza --all --group-directories-first
 }
 
 function mcd() {
@@ -30,6 +30,7 @@ function pid() {
 }
 
 function kp() {
+    print $1
     if [ $1 ]; then
         kill $(lsof -ti:$1)
         print "hasta la vista, baby"
