@@ -74,9 +74,9 @@ alias yst="yarn start"
 alias yt="yarn test"
 alias yuc="yarn global upgrade && yarn cache clean"
 alias yv="yarn version"
-alias yw="yarn workspace"
-alias ywf="yarn workspace frontend"
-alias ywb="yarn workspace backend"
+alias ywf="yarn frontend"
+alias ywb="yarn backend"
+alias ywp="yarn playwright"
 
 # Folders alias
 alias product='cd ~/Projects/product'
