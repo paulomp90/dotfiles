@@ -42,6 +42,7 @@ alias gpf='git push -f'
 
 alias gl='git pull'
 
+alias gundo="git reset --soft HEAD~"
 alias gr='git restore'
 alias gra='git restore .'
 alias grs='git restore --staged'
