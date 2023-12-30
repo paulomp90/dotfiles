@@ -6,10 +6,7 @@ alias reload="source ~/.zshrc"
 # alias pwd="pwd && pwd | pbcopy"
 
 alias ..='cd ..'
-# alias ..2='cd ../..'
-# alias ..3='cd ../../..'
-alias ~='cd ~'
-
+alias o='open'
 alias c='clear'
 alias nvm="fnm"
 alias cat="bat"
@@ -18,7 +15,7 @@ alias ll='eza --long --all --group-directories-first'
 alias tree='eza --tree'
 
 alias which-command=whence
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias grep='grep --color=auto'
 alias serve='python3 -m http.server'
 alias brewu='brew update && brew upgrade && brew cleanup'
 alias mcd=mcd

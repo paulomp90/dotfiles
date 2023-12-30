@@ -30,7 +30,6 @@ function pid() {
 }
 
 function kp() {
-    print $1
     if [ $1 ]; then
         kill $(lsof -ti:$1)
         print "hasta la vista, baby"
@@ -38,3 +37,8 @@ function kp() {
         print "no arg!"
     fi
 }
+
+# Preparing fo future commands
+# function is-osx() {
+#   [[ "$OSTYPE" =~ ^darwin ]] || return 1
+# }
