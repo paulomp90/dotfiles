@@ -15,7 +15,7 @@ AUDIO_ENABLE = no           # Audio output
 OLED_ENABLE = yes
 EXTRAKEY_ENABLE = yes
 TRI_LAYER_ENABLE = yes
-
+CAPS_WORD_ENABLE = yes
 LTO_ENABLE = yes
 
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
