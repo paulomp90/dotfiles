@@ -17,6 +17,7 @@ defaults write com.apple.dock "autohide-time-modifier" -float "0" && killall Doc
 
 defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
 
+defaults write com.apple.dock "tilesize" -int "36" && killall Dock
 
 # Clock
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
