@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Inspiration from https://github.com/driesvints/dotfiles/blob/main/.macos
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+
+defaults write com.apple.dock "autohide-time-modifier" -float "0" && killall Dock
+
+defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+
+
+# Clock
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
+
+###############################################################################
+# Finder                                                                        #
+###############################################################################
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Change default view style in OS X Finder to column
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+killall Finder
