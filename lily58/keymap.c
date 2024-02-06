@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 
+
 // Left-hand home row mods
 #define CTL_A LCTL_T(KC_A)
 #define ALT_S LALT_T(KC_S)
@@ -68,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |      |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |   ´  |  `   |  ~   |  ^   |   %  |-------.    ,-------|   <  |   >  |   [  |   ]  |   '  | DEL  |
-    * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+    * |------+------+------+------+------+------|       |    |   TG  |------+------+------+------+------+------|
     * |      |  ºª  |  @   |  €   |  \   |   |  |-------|    |-------|   /  |   *  |   {  |   }  |   ?  |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
@@ -79,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F1,   KC_F2,         KC_F3,   KC_F4,         KC_F5,   KC_F6,                       KC_F7,        KC_F8,      KC_F9,     KC_F10,        KC_F11,  KC_F12,  
         _______,    KC_1,          KC_2,    KC_3,          KC_4,    KC_5,                        KC_6,         KC_7,       KC_8,       KC_9,          KC_0,  _______,
         _______, KC_RBRC, LSFT(KC_RBRC), KC_QUOT, LSFT(KC_QUOT), LSFT(KC_5),                      KC_GRV, LSFT(KC_GRV), LALT(KC_8), LALT(KC_9),       KC_MINS,  KC_DEL,
-        _______, KC_LBRC, LALT(KC_2), LALT(KC_3), KC_BSLS, LSFT(KC_BSLS),   _______, _______, LSFT(KC_7), LSFT(KC_EQL),  LSA(KC_8),  LSA(KC_9), LSFT(KC_MINS), _______,
+        _______, KC_LBRC, LALT(KC_2), LALT(KC_3), KC_BSLS, LSFT(KC_BSLS),   _______, TG(_LOWER), LSFT(KC_7), LSFT(KC_EQL),  LSA(KC_8),  LSA(KC_9), LSFT(KC_MINS), _______,
                                                 _______, _______, _______,  _______, _______, _______,      _______,    _______
     ),
 
@@ -87,11 +88,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |  SLU |      | PGUP |                    |      |      |  Up  |      |      |      |
+    * |      |      |      |  SLU |      |      |                    | PGUP | Home |  Up  | End  |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |  WS  |  SWL |  SLD |  SWR | PGDN |-------.    ,-------| JWL  | Left | Down |Right | JWR  |      |
-    * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------|    |-------| HOME | END  |CTRL->|CTRL<-|      |      |
+    * |      |  WS  |  SWL |  SLD |  SWR |      |-------.    ,-------| PGDN | Left | Down |Right |      |      |
+    * |------+------+------+------+------+------|       |    |TG RAI |------+------+------+------+------+------|
+    * |      |      |      |      |      |      |-------|    |-------|      |      |CTRL->|CTRL<-|      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt |
     *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -100,13 +101,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *  SL (Select Line) - Up and Down
     *  SW (Select Word) - Left and Right
     *  WS (Window Switch in same app)
-    *  JW (Jump Word) Left and Right
     */
     [_RAISE] = LAYOUT(
         XXXXXXX,       XXXXXXX,      XXXXXXX,       XXXXXXX,      XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX,       XXXXXXX,       XXXXXXX,        XXXXXXX, XXXXXXX,
-        XXXXXXX,       XXXXXXX,      XXXXXXX,   LSFT(KC_UP),      XXXXXXX, KC_PGUP,                         XXXXXXX, XXXXXXX,         KC_UP,       XXXXXXX,        XXXXXXX, _______,
-        _______, LGUI(KC_RBRC), LSA(KC_LEFT), LSFT(KC_DOWN), LSA(KC_RGHT), KC_PGDN,                   LALT(KC_LEFT), KC_LEFT,       KC_DOWN,       KC_RGHT,  LALT(KC_RGHT), _______,
-        _______,       XXXXXXX,      XXXXXXX,       XXXXXXX,      XXXXXXX, XXXXXXX, _______, _______,        KC_HOME, KC_END, LCTL(KC_LEFT), LCTL(KC_RGHT),        XXXXXXX, _______,
+        XXXXXXX,       XXXXXXX,      XXXXXXX,   LSFT(KC_UP),      XXXXXXX, XXXXXXX,                         KC_PGUP, KC_HOME,         KC_UP,       KC_END,        XXXXXXX, _______,
+        _______, LGUI(KC_RBRC), LSA(KC_LEFT), LSFT(KC_DOWN), LSA(KC_RGHT), XXXXXXX,                         KC_PGDN, KC_LEFT,       KC_DOWN,       KC_RGHT,   XXXXXXX, _______,
+        _______,       XXXXXXX,      XXXXXXX,       XXXXXXX,      XXXXXXX, XXXXXXX, _______, TG(_RAISE),       XXXXXXX, XXXXXXX, LCTL(KC_LEFT), LCTL(KC_RGHT),        XXXXXXX, _______,
                                                          _______, _______, _______, _______, _______,  _______, _______, _______
     ),
 
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |      |      |      |      |      |      |                    |      | VOL+ | MUTE | VOL- |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |RGB ON| HUE+ | SAT+ | VAL+ |      | BRG+ |-------.    ,-------|      |  <<  |  >|| |  >>  |      |      |
-    * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+    * |------+------+------+------+------+------|       |    |   TG  |------+------+------+------+------+------|
     * | MODE | HUE- | SAT- | VAL- |      | BRG- |-------|    |-------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | RGUI | RAlt | 
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_VOLU, KC_MUTE, KC_VOLD, XXXXXXX, XXXXXXX,
         RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, KC_BRIU,                   XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BRID, XXXXXXX, TG(_ADJUST), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                     _______, _______, _______, _______, _______,  _______, _______, _______
     ),
 
@@ -243,4 +243,5 @@ bool oled_task_user(void) {
     }
     return false;
 }
-#endif // OLED_ENABLE
+#endif 
+// OLED_ENABLE

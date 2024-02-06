@@ -25,7 +25,7 @@
 #define MASTER_LEFT
 
 #define QUICK_TAP_TERM 0
-#define TAPPING_TERM 150
+#define TAPPING_TERM 180
 
 //#define AUTO_SHIFT_TIMEOUT 175
 //#define NO_AUTO_SHIFT_SPECIAL
