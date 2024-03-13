@@ -5,6 +5,9 @@ Just execute install.sh
 - Install Homebrew and the packages
 - Add ZSH config
 
+## Homebrew
+
+Brewfile was generated twith the command `brew bundle dump`
 
 ## Terminal example:
 

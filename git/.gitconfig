@@ -1,6 +1,6 @@
 [user]
 	name = Paulo Pereira
-	email = 
+	email = paulo.pereira@issuu.com
 
 [alias]
 	br = !git --no-pager branch

@@ -1,5 +1,0 @@
-tap "osx-cross/arm"
-tap "osx-cross/avr"
-cask "alt-tab"
-cask "iterm2"
-cask "raycast"
