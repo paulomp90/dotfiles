@@ -4,7 +4,7 @@
 function zsh_add_file() {
     if [ -f $1 ]; then
         source $1
-        print "sourced $1"
+        # print "sourced $1"
     else
         print "404: $1 not found."
     fi
