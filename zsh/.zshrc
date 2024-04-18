@@ -47,7 +47,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 #   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$PATH:$HOME/.yarn/bin"
+#export PATH="$(yarn global bin):$PATH"
+#export PATH="$PATH:$HOME/.yarn/bin"
 
 # FZF
 # Setting fd as the default source for fzf
@@ -58,3 +59,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
   alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :100 {}'"
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+eval "$(fzf --zsh)"
+
+# Webstorm
+#export PATH="/Applications/WebStorm.app/Contents/MacOS:$PATH"

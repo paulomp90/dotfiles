@@ -7,22 +7,24 @@ function brew_install {
     cd ./homebrew && brew bundle --force cleanup --file=Brewfile
 
 
-    os_type="$(uname -s)"
+#     os_type="$(uname -s)"
 
-    if [ "${os_type}" == "Darwin" ]; then
-        brew bundle --force cleanup --file=BrewfileMac
-    fi
+#     if [ "${os_type}" == "Darwin" ]; then
+#         brew bundle --force cleanup --file=BrewfileMac
+#     fi
 }
 
 [ -x "$(command -v brew > /dev/null 2>&1)" ] && brew_install
 
-rm -rf $HOME/.zshrc
-rm -rf $HOME/.zshenv
-rm -rf $HOME/.gitconfig
+# rm -rf $HOME/.zshrc
+# rm -rf $HOME/.zshenv
+# rm -rf $HOME/.gitconfig
 
-ln -s $ZSHPATH/.zshenv ~/.zshenv &&
-ln -s $ZSHPATH/.zshrc ~/.zshrc &&
-ln -s $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig
+ln -sfnv $ZSHPATH/.zshenv $HOME/.zshenv &&
+ln -sfnv $ZSHPATH/.zshrc $HOME/.zshrc &&
+ln -sfnv $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig
 
-source ~/Projects/personal/dotfiles/zsh/.zshenv
-source ~/Projects/personal/dotfiles/zsh/.zshrc
+
+# source ~/.zshenv
+# source ~/.zshrc
+ 
