@@ -6,8 +6,9 @@ export LANG=en_US.UTF-8
 # Turn off all beeps
 unsetopt BEEP
 
-# History
-setopt SHARE_HISTORY             # Share history between all sessions.
+####### History
+setopt SHARE_HISTORY         # Share history between all sessions.
+setopt HIST_IGNORE_DUPS      # Hist to ignore duplications
 
 eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(fnm env --use-on-cd)"
@@ -52,7 +53,7 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# ----- FZF---------------
+####### FZF
 # Setting fd as the default source for fzf
 # show hidden files and exclude git ignore
 export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
