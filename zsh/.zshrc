@@ -10,16 +10,16 @@ unsetopt BEEP
 setopt SHARE_HISTORY         # Share history between all sessions.
 setopt HIST_IGNORE_DUPS      # Hist to ignore duplications
 
-eval $(/opt/homebrew/bin/brew shellenv)
-eval "$(fnm env --use-on-cd)"
+autoload -U compinit; compinit
 
 # Completions
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-autoload -U compinit; compinit
+eval $(/opt/homebrew/bin/brew shellenv) 
+eval "$(fnm env --use-on-cd)"
 
-# pure
+####### Pure Prompt
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
@@ -29,7 +29,7 @@ zstyle ':prompt:pure:prompt:success' color green
 zstyle :prompt:pure:git:stash show yes
 
 
-# Useful Functions
+####### ZSH Useful Functions
 source "$ZSHPATH/zsh-functions"
 
 zsh_add_file "$ZSHPATH/.zshutils"
