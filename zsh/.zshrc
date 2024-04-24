@@ -19,16 +19,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 eval $(/opt/homebrew/bin/brew shellenv) 
 eval "$(fnm env --use-on-cd)"
 
-####### Pure Prompt
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-autoload -U promptinit; promptinit
-prompt pure
-
-PURE_PROMPT_SYMBOL='➜'
-zstyle ':prompt:pure:prompt:success' color green
-zstyle :prompt:pure:git:stash show yes
-
-
 ####### ZSH Useful Functions
 source "$ZSHPATH/zsh-functions"
 
@@ -101,3 +91,5 @@ eval "$(fzf --zsh)"
 
 # Webstorm
 #export PATH="/Applications/WebStorm.app/Contents/MacOS:$PATH"
+
+eval "$(starship init zsh)"
