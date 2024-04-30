@@ -51,7 +51,7 @@ $character"""
 format = '[$symbol($version)]($style)'
 
 [cmd_duration]
-format = '[⏱ $duration]($style)'
+format = '[ ⏱ $duration]($style)'
 style = "yellow"
 
 [dart]
@@ -68,10 +68,12 @@ format = '[$symbol$branch]($style)'
 
 [git_branch]
 format = '[$symbol$branch]($style)'
+style = "white"
 
 [git_status]
-format = "[[ (*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
-style = "cyan"
+#format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed) ]($style)"
+format = ' [(*$conflicted$untracked$modified$staged$renamed$deleted)($ahead_behind$stashed)]($style) '
+style = "red"
 conflicted = "​"
 untracked = "​"
 modified = "​"
