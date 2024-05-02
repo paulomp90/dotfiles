@@ -1,3 +1,5 @@
+# https://gist.github.com/ryo-ARAKI/48a11585299f9032fa4bda60c9bba593
+
 command_timeout = 10000
 
 format = """
@@ -25,10 +27,8 @@ $deno\
 $golang\
 $guix_shell\
 $lua\
-$nim\
 $nodejs\
 $python\
-$ruby\
 $rust\
 $nix_shell\
 $memory_usage\
@@ -48,30 +48,30 @@ $shell\
 $character"""
 
 [cmake]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [cmd_duration]
-format = '[ ⏱ $duration]($style)'
+format = '[⏱ $duration]($style) '
 style = "yellow"
 
 [dart]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [deno]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [docker_context]
-format = '[$symbol$context]($style)'
+format = '[$symbol$context]($style) '
 
 [fossil_branch]
-format = '[$symbol$branch]($style)'
+format = '[$symbol$branch]($style) '
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+format = "[$branch]($style) "
+style = "bold yellow"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style) "
 style = "cyan"
 conflicted = "​"
 untracked = "​"
@@ -86,57 +86,45 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [golang]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [guix_shell]
-format = '[$symbol]($style)'
+format = '[$symbol]($style) '
 
 [kubernetes]
-format = '[$symbol$context( \($namespace\))]($style)'
+format = '[$symbol$context( \($namespace\))]($style) '
 
 [lua]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [memory_usage]
-format = '$symbol[$ram( | $swap)]($style)'
-
-[nim]
-format = '[$symbol($version)]($style)'
+format = '$symbol[$ram( | $swap)]($style) '
 
 [nix_shell]
-format = '[$symbol$state( \($name\))]($style)'
+format = '[$symbol$state( \($name\))]($style) '
 
 [nodejs]
-format = '[$symbol($version)]($style)'
-
-[os]
-format = '[$symbol]($style)'
+format = '[$symbol($version)]($style) '
 
 [package]
-format = '[$symbol$version]($style)'
+format = '[$symbol$version]($style) '
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
-
-[red]
-format = '[$symbol($version)]($style)'
-
-[ruby]
-format = '[$symbol($version)]($style)'
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
 
 [rust]
-format = '[$symbol($version)]($style)'
+format = '[$symbol($version)]($style) '
 
 [sudo]
-format = '[as $symbol]($style)'
+format = '[as $symbol]($style) '
 
 [time]
-format = '[$time]($style)'
+format = '[$time]($style) '
 
 [username]
-format = '[$user]($style)'
+format = '[$user]($style) '
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
 success_symbol = '[➜](bold green)'
-error_symbol = '[➜](bold red)'
+error_symbol = '[✖](bold red)'
