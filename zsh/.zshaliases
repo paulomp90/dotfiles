@@ -51,6 +51,8 @@ alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 
 alias gb='git branch'
+alias gbd='git branch -D $(git branch | grep -v -e "main")' # Delete all local branchs
+
 alias glg='git lg'
 alias gst='git st'
 
@@ -59,7 +61,6 @@ alias gstd='git stash drop'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 
-alias gdr='git branch -D $(git branch | grep -v -e "main")' # Delete all local branchs
 
 # Folders alias
 alias product='cd ~/Projects/product'
