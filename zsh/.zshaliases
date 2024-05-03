@@ -59,7 +59,7 @@ alias gstd='git stash drop'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 
-# alias dbr='git branch --merged | grep -v "main\|master" | xargs git branch -D'
+alias gdr='git branch -D $(git branch | grep -v -e "main")' # Delete all local branchs
 
 # Folders alias
 alias product='cd ~/Projects/product'
