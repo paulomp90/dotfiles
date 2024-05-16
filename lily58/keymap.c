@@ -23,7 +23,6 @@
 #define GUI_F LGUI_T(KC_F)
 
 #define CT LCTL_T(KC_TAB)
-#define SYM_SPC LT(_SYM, KC_SPC)
 
 // Right-hand home row mods
 #define GUI_J RGUI_T(KC_J)
@@ -39,7 +38,7 @@ enum layer_number {
     _SYM,
     _NAV,
     _NUM,
-    _ADJUST,
+    _ADJ,
     _GAME,
 };
 
@@ -53,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * | SHIFT|   Z  |   X  |   C  |   V  |   B  |-------.     ,------|   N  |   M  |  ,;  |   .: |  _-  |SHIFT |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | LGUI | NAV  | /Space  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/  SYM  /         \  NUM \ |      |      |      
+    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
+    *                          |      |      |/       /         \  NUM \ |      |      |      
     *                          '-------------''------'           '------''-------------'
     *    
     * CT -> ctrl and tab
@@ -63,30 +62,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * 
     */
     [_QWERTY] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
-         KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,     KC_P, QK_REPEAT_KEY,
-             CT,   CTL_A,   ALT_S, SHIFT_D,   GUI_F,    KC_G,                       KC_H,   GUI_J, SHIFT_K,   ALT_L, CTL_SCLN, KC_BSPC,
-        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
-                                   XXXXXXX, KC_LGUI,    MO(_NAV),  SYM_SPC,   NUM_ENT, MO(_ADJUST), KC_RGUI, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
+         KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,     KC_P, QK_REPEAT_KEY,
+             CT,   CTL_A,   ALT_S, SHIFT_D,   GUI_F,     KC_G,                       KC_H,   GUI_J, SHIFT_K,   ALT_L, CTL_SCLN, KC_BSPC,
+        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,     KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
+                                   XXXXXXX, MO(_ADJ), MO(_NAV),  KC_SPC,  NUM_ENT, MO(_SYM), KC_RGUI, XXXXXXX
     ),
 
     /* SYM   
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |      |      |      |      |      |                    |      |  ºª  |   [  |   ]  |  +*  |      |
+    * |      |      |      |      |      |      |                    |   %  |  ºª  |   (  |   )  |  +*  |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      | CRTL | ALT  | SHIFT| GUI  |      |                    |  ´`  |  <>  |   {  |   }  |  '?  |      |
+    * |      | CRTL | ALT  | SHIFT| GUI  |      |                    |  ´`  |  <>  |  [{  |  }]  |  '?  |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------.     ,------|  ~^  |  @   |   €  |  \|  |   %  |      |
+    * |      |      |      |      |      |      |-------.     ,------|  ~^  |  @   |   €  |  \|  |   /  |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | LGUI | NAV  | /Space  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/  SYM  /         \  NUM \ |      |      | 
+    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
+    *                          |      |      |/       /         \  NUM \ |      |      |  
     *                          '-------------''------'           '------''-------------'
     */
     [_SYM] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX,    KC_LBRC, LALT(KC_8), LALT(KC_9),     KC_EQL, _______,
-        _______, KC_LCTL, KC_LALT, KC_RSFT, KC_LGUI, XXXXXXX,                    KC_RBRC,     KC_GRV,  LSA(KC_8),  LSA(KC_9),    KC_MINS, _______,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_QUOT, LALT(KC_2), LALT(KC_3),    KC_BSLS, LSFT(KC_5), _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 LSFT(KC_5),    KC_LBRC, LSFT(KC_8), LSFT(KC_9),     KC_EQL, _______,
+        _______, KC_LCTL, KC_LALT, KC_RSFT, KC_LGUI, XXXXXXX,                    KC_RBRC,     KC_GRV, LALT(KC_8), LALT(KC_9),    KC_MINS, _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_QUOT, LALT(KC_2), LALT(KC_3),    KC_BSLS, LSFT(KC_7), _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
@@ -98,8 +97,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      | UNDO | CUT  | COPY | PASTE|      |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | LGUI | NAV  | /Space  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/  SYM  /         \  NUM \ |      |      | 
+    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
+    *                          |      |      |/       /         \  NUM \ |      |      |  
     *                          '-------------''------'           '------''-------------'
     * 
     *  WS (Window Switch in same app, mac usage)
@@ -145,12 +144,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      | MODE | HUE- | SAT- | VAL- | BRG- |-------.     ,------|      | VOL+ | MUTE | VOL- |  F12 |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | LGUI | NAV  | /Space  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/  SYM  /         \  NUM \ |      |      | 
+    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
+    *                          |      |      |/       /         \  NUM \ |      |      |  
     *                          `---------------------'           '------''-------------'         
     */
 
-    [_ADJUST] = LAYOUT(
+    [_ADJ] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
         _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_BRIU,                    TG(_GAME), KC_MPRV, KC_MPLY, KC_MNXT,  KC_F11, _______,  
@@ -166,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |      |      |      |      |      |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | SPACE| NAV  | /  GUI  /       \Enter \  | NUM  | RGUI |      
+    *                          | SPACE| NAV  | /  GUI  /       \Enter \  | ADJ  | RGUI |      
     *                          |      |      |/       /         \      \ |      |      | 
     *                          `---------------------'           '------''-------------'         
     */
@@ -244,7 +243,7 @@ void oled_render_layer_state(void) {
             oled_write_ln_P(PSTR("NUM"), false);
             break;
         case 4:
-            oled_write_ln_P(PSTR("Adjust"), false);
+            oled_write_ln_P(PSTR("_ADJ"), false);
             break;
         case 5:
             oled_write_ln_P(PSTR("Game"), false);
