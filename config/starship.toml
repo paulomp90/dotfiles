@@ -60,6 +60,9 @@ format = '[$symbol($version)]($style) '
 [deno]
 format = '[$symbol($version)]($style) '
 
+[directory]
+style = 'cyan'
+
 [docker_context]
 format = '[$symbol$context]($style) '
 
@@ -68,7 +71,7 @@ format = '[$symbol$branch]($style) '
 
 [git_branch]
 format = "[$branch]($style) "
-style = "bold yellow"
+style = "yellow"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style) "
@@ -105,6 +108,7 @@ format = '[$symbol$state( \($name\))]($style) '
 
 [nodejs]
 format = '[$symbol($version)]($style) '
+style = 'green'
 
 [package]
 format = '[$symbol$version]($style) '
@@ -126,5 +130,5 @@ format = '[$user]($style) '
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)'
-error_symbol = '[✖](bold red)'
+success_symbol = '[➜](green)'
+error_symbol = '[✖](red)'
