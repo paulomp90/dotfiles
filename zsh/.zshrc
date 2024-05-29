@@ -33,6 +33,10 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
+# zsh-syntax-highlight
+ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
+ZSH_HIGHLIGHT_STYLES[path]="none"
+
 #export PATH="$(yarn global bin):$PATH"
 #export PATH="$PATH:$HOME/.yarn/bin"
 
