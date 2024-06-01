@@ -71,31 +71,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* SYM   
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |      |      |      |      |      |                    |   %  |  ºª  |   (  |   )  |  +*  |      |
+    * |      |   !  |   "@ |  €#  |  $   |  %   |                    |  ºª  |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      | CRTL | ALT  | SHIFT| GUI  |      |                    |  ´`  |  <>  |  [{  |  }]  |  '?  |      |
+    * |      |   &  |   /  |  (   |  )   |  =   |                    |  +*  | GUI  | SHIFT| ALT  | CTRL |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------.     ,------|  ~^  |  @   |   €  |  \|  |   /  |      |
+    * |      |  '?  |  \|  |  [{  |  }]  |  <>  |-------.     ,------|  ~^  |  ´`  |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
-    *                          |      |      |/       /         \  NUM \ |      |      |  
+    *                          |      |      |/       /         \  NUM \ |      |      |
     *                          '-------------''------'           '------''-------------'
+    * 
     */
     [_SYM] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 LSFT(KC_5),    KC_LBRC, LSFT(KC_8), LSFT(KC_9),     KC_EQL, _______,
-        _______, KC_LCTL, KC_LALT, KC_RSFT, KC_LGUI, XXXXXXX,                    KC_RBRC,     KC_GRV, LALT(KC_8), LALT(KC_9),    KC_MINS, _______,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_QUOT, LALT(KC_2), LALT(KC_3),    KC_BSLS, LSFT(KC_7), _______,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,
+        _______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5),                    KC_LBRC,    XXXXXXX,    XXXXXXX, XXXXXXX,     XXXXXXX, _______,
+        _______, LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),                     KC_EQL,    KC_RGUI,    KC_RSFT,    KC_RALT,    KC_RCTL, _______,
+        _______,    KC_MINS,    KC_BSLS, LALT(KC_8), LALT(KC_9),     KC_GRV,  XXXXXXX, XXXXXXX, KC_QUOT,    KC_RBRC, XXXXXXX,    XXXXXXX, XXXXXXX, _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
     /* NAV
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |      |      |  SWL |  SWR |      |                    | PGUP | Home |  Up  | End  |      |      |
+    * |      |      |      |      |  REL |      |                    | PGUP | Home |  Up  | End  |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      | CRTL |  ALT | SHIFT| GUI  |  WS  |                    | PGDN | Left | Down |Right |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      | UNDO | CUT  | COPY | PASTE|      |-------.     ,------|      |      |      |      |      |      |
+    * |      | UNDO | CUT  | COPY | PASTE|      |-------.     ,------|      | SWL  |      | SWR  |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
     *                          |      |      |/       /         \  NUM \ |      |      |  
@@ -103,13 +104,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * 
     *  WS (Window Switch in same app, mac usage)
     *  SW (Select Word) - Left and Right
+    *  REL - tab reload
     */
 
     [_NAV] = LAYOUT(
-        XXXXXXX,       XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        _______,       XXXXXXX,    XXXXXXX, LSA(KC_LEFT), LSA(KC_RGHT),       XXXXXXX,                         KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX, _______,
-        _______,       KC_LCTL,    KC_LALT,      KC_RSFT,      KC_LGUI, LGUI(KC_RBRC),                         KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, _______,
-        _______,    LGUI(KC_Z), LGUI(KC_X),   LGUI(KC_C),   LGUI(KC_V),       XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+        XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,                         XXXXXXX,      XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,
+        _______,    XXXXXXX,      XXXXXXX,      XXXXXXX,   LGUI(KC_R),      XXXXXXX,                          KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
+        _______,    KC_LCTL,      KC_LALT,      KC_RSFT,      KC_LGUI, LGUI(KC_RBRC),                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
+        _______, LGUI(KC_Z),   LGUI(KC_X),   LGUI(KC_C),   LGUI(KC_V),       XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX, LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
                                                               XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
