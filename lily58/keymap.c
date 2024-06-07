@@ -167,17 +167,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |      |      |      |      |      |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | SPACE| NAV  | /  GUI  /       \Enter \  | ADJ  | RGUI |      
+    *                          | SPACE| ALT  | /  GUI  /       \Enter \  | ADJ  | RGUI |      
     *                          |      |      |/       /         \      \ |      |      | 
     *                          `---------------------'           '------''-------------'         
     */
 
     [_GAME] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX, TG(_GAME),
-        _______,    KC_A,    KC_S,    KC_D,    KC_F,    _______,                 XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+         KC_TAB, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX, TG(_GAME),
+        KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,  _______,                   XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
         _______, _______, _______, _______, _______,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                     XXXXXXX, KC_SPC, XXXXXXX, KC_LGUI, KC_ENT, XXXXXXX, _______, XXXXXXX
+                                     XXXXXXX, KC_SPC, KC_LALT, KC_LGUI, KC_ENT, XXXXXXX, _______, XXXXXXX
     )
 };
 
