@@ -7,8 +7,14 @@ export LANG=en_US.UTF-8
 unsetopt BEEP
 
 ####### History
-setopt SHARE_HISTORY         # Share history between all sessions.
-setopt HIST_IGNORE_DUPS      # Hist to ignore duplications
+# Share history between all sessions.
+setopt SHARE_HISTORY
+
+# Hist to ignore duplications
+setopt HIST_IGNORE_DUPS
+
+# Remove duplicates first when HISTSIZE is met
+setopt hist_expire_dups_first   
 
 autoload -U compinit; compinit
 
