@@ -93,6 +93,8 @@ eval "$(fzf --zsh)"
 
 
 #-------------------------
+export STARSHIP_CONFIG=~$HOME./config/starship/starship.toml
+
 eval "$(starship init zsh)"
 
 test -e /Users/paulopereira/.iterm2_shell_integration.zsh && source /Users/paulopereira/.iterm2_shell_integration.zsh || true

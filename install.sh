@@ -24,8 +24,4 @@ ln -sfnv $ZSHPATH/.zshenv $HOME/.zshenv &&
 ln -sfnv $ZSHPATH/.zshrc $HOME/.zshrc &&
 ln -sfnv $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig
 ln -sfnv $PROJECT/dotfiles/config/starship.toml ~/.config/starship.toml
-
-
-# source ~/.zshenv
-# source ~/.zshrc
- 
+ln -sfnv $PROJECT/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
