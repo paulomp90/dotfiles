@@ -71,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* SYM   
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |   !  |   "@ |  €#  |  $   |  %   |                    |  ºª  |      |      |      |      |      |
+    * |      |   !  |   "@ |  €#  |  $   |  %   |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |   &  |   /  |  (   |  )   |  =   |                    |  +*  | GUI  | SHIFT| ALT  | CTRL |      |
+    * |      |   &  |   /  |  (   |  )   |  =   |                    |  ºª  | GUI  | SHIFT| ALT  | CTRL |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |  '?  |  \|  |  [{  |  }]  |  <>  |-------.     ,------|  ~^  |  ´`  |      |      |      |      |
+    * |      |  '?  |  \|  |  [{  |  }]  |  <>  |-------.     ,------|      |   ~  |   ^  |   ´  |  `   |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
     *                          |      |      |/       /         \  NUM \ |      |      |
@@ -83,10 +83,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * 
     */
     [_SYM] = LAYOUT(
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,
-        _______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5),                    KC_LBRC,    XXXXXXX,    XXXXXXX, XXXXXXX,     XXXXXXX, _______,
-        _______, LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),                     KC_EQL,    KC_RGUI,    KC_RSFT,    KC_RALT,    KC_RCTL, _______,
-        _______,    KC_MINS,    KC_BSLS, LALT(KC_8), LALT(KC_9),     KC_GRV,  XXXXXXX, XXXXXXX, KC_QUOT,    KC_RBRC, XXXXXXX,    XXXXXXX, XXXXXXX, _______,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                    XXXXXXX,    XXXXXXX,       XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX,
+        _______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5),                    XXXXXXX,    XXXXXXX,       XXXXXXX, XXXXXXX,       XXXXXXX, _______,
+        _______, LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),                    KC_LBRC,    KC_RGUI,       KC_RSFT, KC_RALT,       KC_RCTL, _______,
+        _______,    KC_MINS,    KC_BSLS, LALT(KC_8), LALT(KC_9),     KC_GRV,  XXXXXXX, XXXXXXX, XXXXXXX,    KC_QUOT, LSFT(KC_QUOT), KC_RBRC, LSFT(KC_RBRC), _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
