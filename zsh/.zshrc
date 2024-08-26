@@ -23,7 +23,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 eval $(/opt/homebrew/bin/brew shellenv) 
-eval "$(fnm env --use-on-cd)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 ####### ZSH Useful Functions
 source "$ZSHPATH/zsh-functions"
@@ -98,3 +99,5 @@ eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
 
 test -e /Users/paulopereira/.iterm2_shell_integration.zsh && source /Users/paulopereira/.iterm2_shell_integration.zsh || true
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
