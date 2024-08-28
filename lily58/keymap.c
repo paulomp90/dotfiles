@@ -30,7 +30,8 @@
 #define ALT_L RALT_T(KC_L)
 #define CTL_SCLN RCTL_T(KC_SCLN)
 
-#define NUM_ENT LT(_NUM, KC_ENT)
+// #define NUM_ENT LT(_NUM, KC_ENT)
+#define NUM_SPACE LT(_NUM, KC_SPC)
 
 
 enum layer_number {
@@ -52,24 +53,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * | SHIFT|   Z  |   X  |   C  |   V  |   B  |-------.     ,------|   N  |   M  |  ,;  |   .: |  _-  |SHIFT |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
-    *                          |      |      |/       /         \  NUM \ |      |      |      
+    *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
+    *                          |      |      |/ NUM   /         \      \ |      |      |
     *                          '-------------''------'           '------''-------------'
-    *    
+    *
     * CT -> ctrl and tab
     * REP -> repeat last
-    * A_SYM -> LT (A, SYM)
-    * 
+    *
     */
     [_QWERTY] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
          KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,     KC_P, QK_REPEAT_KEY,
              CT,   CTL_A,   ALT_S, SHIFT_D,   GUI_F,     KC_G,                       KC_H,   GUI_J, SHIFT_K,   ALT_L, CTL_SCLN, KC_BSPC,
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,     KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
-                                   XXXXXXX, MO(_ADJ), MO(_NAV),  KC_SPC,  NUM_ENT, MO(_SYM), KC_RGUI, XXXXXXX
+                                // XXXXXXX, MO(_ADJ), MO(_NAV),  KC_SPC,  NUM_ENT, MO(_SYM), KC_RGUI, XXXXXXX
+                                   XXXXXXX, KC_LGUI, MO(_SYM), NUM_SPACE,  KC_ENT, MO(_NAV), MO(_ADJ), XXXXXXX
     ),
 
-    /* SYM   
+    /* SYM
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |   !  |   "@ |  €#  |  $   |  %   |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -77,10 +78,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |  '?  |  \|  |  [{  |  }]  |  <>  |-------.     ,------|      |   ~  |   ^  |   ´  |  `   |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
-    *                          |      |      |/       /         \  NUM \ |      |      |
+    *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
+    *                          |      |      |/ NUM   /         \      \ |      |      |
     *                          '-------------''------'           '------''-------------'
-    * 
+    *
     */
     [_SYM] = LAYOUT(
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                    XXXXXXX,    XXXXXXX,       XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX,
@@ -92,27 +93,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* NAV
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |      |      |      |  REL |      |                    | PGUP | Home |  Up  | End  |      |      |
+    * |      |      |      |      |      |      |                    | PGUP | Home |  Up  | End  |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      | CRTL |  ALT | SHIFT| GUI  |  WS  |                    | PGDN | Left | Down |Right |      |      |
+    * |      |      |      |      |      |      |                    | PGDN | Left | Down |Right |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      | UNDO | CUT  | COPY | PASTE|      |-------.     ,------|      | SWL  |      | SWR  |      |      |
+    * |      |      |      |      |      |      |-------.     ,------|  WS  | SWL  |      | SWR  |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
-    *                          |      |      |/       /         \  NUM \ |      |      |  
+    *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
+    *                          |      |      |/ NUM   /         \      \ |      |      |
     *                          '-------------''------'           '------''-------------'
-    * 
+    *
     *  WS (Window Switch in same app, mac usage)
     *  SW (Select Word) - Left and Right
-    *  REL - tab reload
     */
 
     [_NAV] = LAYOUT(
-        XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,                         XXXXXXX,      XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,
-        _______,    XXXXXXX,      XXXXXXX,      XXXXXXX,   LGUI(KC_R),      XXXXXXX,                          KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
-        _______,    KC_LCTL,      KC_LALT,      KC_RSFT,      KC_LGUI, LGUI(KC_RBRC),                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
-        _______, LGUI(KC_Z),   LGUI(KC_X),   LGUI(KC_C),   LGUI(KC_V),       XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX, LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
-                                                              XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX,      XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______, _______,                         KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
+        _______, _______, _______, _______, _______, _______,                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
+        _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, LGUI(KC_RBRC), LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
+                                   XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
     /* NUM
@@ -124,10 +124,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |  +   |  -   |  *   |  /   |   .  |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | LGUI | NAV  | /Space  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/  SYM  /         \  NUM \ |      |      |  
+    *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
+    *                          |      |      |/ NUM   /         \      \ |      |      |
     *                          '-------------''------'           '------''-------------'
-    * 
+    *
     */
 
     [_NUM] = LAYOUT(
@@ -146,15 +146,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      | MODE | HUE- | SAT- | VAL- | BRG- |-------.     ,------|      | VOL+ | MUTE | VOL- |  F12 |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | ADJ  | NAV  | /Space  /       \Enter \  | SYM  | RGUI |      
-    *                          |      |      |/       /         \  NUM \ |      |      |  
-    *                          `---------------------'           '------''-------------'         
+    *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
+    *                          |      |      |/ NUM   /         \      \ |      |      |
+    *                          `---------------------'           '------''-------------'
     */
 
     [_ADJ] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
-        _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_BRIU,                    TG(_GAME), KC_MPRV, KC_MPLY, KC_MNXT,  KC_F11, _______,  
+        _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_BRIU,                    TG(_GAME), KC_MPRV, KC_MPLY, KC_MNXT,  KC_F11, _______,
         _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_BRID,  XXXXXXX, XXXXXXX,   XXXXXXX, KC_VOLU, KC_MUTE, KC_VOLD,  KC_F12, _______,
                                     XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
@@ -167,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |      |      |      |      |      |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
-    *                          | SPACE| ALT  | /  GUI  /       \Enter \  | ADJ  | RGUI |      
-    *                          |      |      |/       /         \      \ |      |      | 
-    *                          `---------------------'           '------''-------------'         
+    *                          | ALT  | SPACE| /  GUI  /       \Enter \  |      | RGUI |
+    *                          |      |      |/       /         \      \ |      |      |
+    *                          `---------------------'           '------''-------------'
     */
 
     [_GAME] = LAYOUT(
@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TAB, _______, _______, _______, _______,  _______,                   XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX, TG(_GAME),
         KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,  _______,                   XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
         _______, _______, _______, _______, _______,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                     XXXXXXX, KC_SPC, KC_LALT, KC_LGUI, KC_ENT, XXXXXXX, _______, XXXXXXX
+                                     XXXXXXX, KC_LALT, KC_SPC, KC_LGUI, KC_ENT, XXXXXXX, _______, XXXXXXX
     )
 };
 
@@ -268,31 +268,31 @@ void oled_render_caps_state(void) {
 void oled_render_logo(void) {
     static const char PROGMEM mb_logo[] = {
 // 'beard2', 32x100px
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x04, 0x1e, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfc, 0x3c, 0x0c, 
-0x0c, 0x3c, 0xfc, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0x1e, 0x06, 0x00, 
-0xf8, 0xf0, 0x00, 0x00, 0x01, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x81, 0xc0, 0xc0, 0xc0, 
-0xc0, 0xc0, 0xc0, 0xc1, 0x83, 0x83, 0x03, 0x03, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00, 0xe0, 0xf8, 
-0x03, 0x3f, 0xff, 0xfc, 0xf8, 0xf8, 0xf8, 0xf8, 0xfc, 0xfe, 0xff, 0x87, 0x83, 0xc1, 0xe1, 0xe0, 
-0xe0, 0xe0, 0xe0, 0xc1, 0x83, 0x87, 0xff, 0xfe, 0xfe, 0xfc, 0xf8, 0xf8, 0xfc, 0xfe, 0x3f, 0x07, 
-0x00, 0x00, 0x00, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
-0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x3f, 0x1f, 0x07, 0x03, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x03, 0x07, 0x07, 0x0f, 
-0x0f, 0x0f, 0x0f, 0x07, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x04, 0x1e, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfc, 0x3c, 0x0c,
+0x0c, 0x3c, 0xfc, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0xfe, 0x1e, 0x06, 0x00,
+0xf8, 0xf0, 0x00, 0x00, 0x01, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x81, 0xc0, 0xc0, 0xc0,
+0xc0, 0xc0, 0xc0, 0xc1, 0x83, 0x83, 0x03, 0x03, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00, 0xe0, 0xf8,
+0x03, 0x3f, 0xff, 0xfc, 0xf8, 0xf8, 0xf8, 0xf8, 0xfc, 0xfe, 0xff, 0x87, 0x83, 0xc1, 0xe1, 0xe0,
+0xe0, 0xe0, 0xe0, 0xc1, 0x83, 0x87, 0xff, 0xfe, 0xfe, 0xfc, 0xf8, 0xf8, 0xfc, 0xfe, 0x3f, 0x07,
+0x00, 0x00, 0x00, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x3f, 0x1f, 0x07, 0x03, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x03, 0x07, 0x07, 0x0f,
+0x0f, 0x0f, 0x0f, 0x07, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
     oled_write_raw_P(mb_logo, sizeof(mb_logo));
@@ -313,5 +313,5 @@ bool oled_task_user(void) {
     }
     return false;
 }
-#endif 
+#endif
 // OLED_ENABLE

@@ -14,7 +14,7 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 
 # Remove duplicates first when HISTSIZE is met
-setopt hist_expire_dups_first   
+setopt hist_expire_dups_first
 
 autoload -U compinit; compinit
 
@@ -22,7 +22,7 @@ autoload -U compinit; compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-eval $(/opt/homebrew/bin/brew shellenv) 
+eval $(/opt/homebrew/bin/brew shellenv)
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
@@ -31,21 +31,6 @@ source "$ZSHPATH/zsh-functions"
 
 zsh_add_file "$ZSHPATH/.zshutils"
 zsh_add_file "$ZSHPATH/.zshaliases"
-
-# Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-
-# zsh-autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
-
-# zsh-syntax-highlight
-ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
-ZSH_HIGHLIGHT_STYLES[path]="none"
-
-#export PATH="$(yarn global bin):$PATH"
-#export PATH="$PATH:$HOME/.yarn/bin"
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
@@ -94,10 +79,18 @@ eval "$(fzf --zsh)"
 
 
 #-------------------------
-#export STARSHIP_CONFIG=~$HOME./config/starship/starship.toml
-
 eval "$(starship init zsh)"
 
-test -e /Users/paulopereira/.iterm2_shell_integration.zsh && source /Users/paulopereira/.iterm2_shell_integration.zsh || true
-
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+
+# zsh-syntax-highlight
+ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
+ZSH_HIGHLIGHT_STYLES[path]="none"

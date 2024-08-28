@@ -63,11 +63,5 @@ alias gstp='git stash pop'
 
 
 # Folders alias
-alias product='cd ~/Projects/product'
-alias internal='cd ~/Projects/internal'
 alias per='cd ~/Projects/personal'
-alias template='cd ~/Projects/template/internal-typescript-templates'
-alias teams='cd ~/Projects/product/product-teams-management'
-alias silk='cd ~/Projects/internal/internal-design-system'
 alias dot='cd ~/Projects/personal/dotfiles'
-alias sl='cd ~/Projects/personal/superloyal/product-superloyal'
