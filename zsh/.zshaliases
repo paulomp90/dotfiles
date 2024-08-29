@@ -8,7 +8,6 @@ alias reload="source ~/.zshrc"
 alias ..='cd ..'
 alias o='open'
 alias c='clear'
-alias nvm="fnm"
 alias cat="bat"
 alias ls='eza --all --group-directories-first'
 alias ll='eza --long --all --group-directories-first'

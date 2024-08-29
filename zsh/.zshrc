@@ -32,7 +32,7 @@ source "$ZSHPATH/zsh-functions"
 zsh_add_file "$ZSHPATH/.zshutils"
 zsh_add_file "$ZSHPATH/.zshaliases"
 
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 ####### FZF
 # Setting fd as the default source for fzf
@@ -85,12 +85,12 @@ eval "$(starship init zsh)"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+# zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
 # zsh-autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#767676"
+# ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
 # zsh-syntax-highlight
-ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
-ZSH_HIGHLIGHT_STYLES[path]="none"
+# ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
+# ZSH_HIGHLIGHT_STYLES[path]="none"
