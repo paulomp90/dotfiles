@@ -2,7 +2,7 @@
 
 # Install Homebrew
 function brew_install {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     cd ./homebrew && brew bundle --force cleanup --file=Brewfile
 
@@ -16,11 +16,12 @@ function brew_install {
 
 [ -x "$(command -v brew > /dev/null 2>&1)" ] && brew_install
 
-# rm -rf $HOME/.zshrc
-# rm -rf $HOME/.zshenv
-# rm -rf $HOME/.gitconfig
-
-ln -sfnv /Users/paulopereira/Projects/dotfiles/zsh/.zshrc /Users/paulopereira/.zshrc &&
+ln -sfnv /Users/paulopereira/Projects/dotfiles/zsh/.zshrc /Users/paulopereira/.zshrc
 ln -sfnv /Users/paulopereira/Projects/dotfiles/git/.gitconfig ~/.gitconfig
+
+ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/kitty.conf ~/.config/kitty/kitty.conf
+ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/karabiner ~/.config/karabiner
+ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/raycast ~/.config/raycast
+
 ln -sfnv /Users/paulopereira/Projects/dotfiles/config/starship.toml ~/.config/starship.toml
-ln -sfnv /Users/paulopereira/Projects/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
+ln -sfnv /Users/paulopereira/Projects/dotfiles/config/.asdfrc ~/.asdfrc
