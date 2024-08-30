@@ -4,5 +4,5 @@
 # EXPORT ENVIRONMENT VARIABLE #
 ###############################
 
-export PROJECT="$HOME/Projects/personal"
+export PROJECT="$HOME/Projects"
 export ZSHPATH="$PROJECT/dotfiles/zsh"

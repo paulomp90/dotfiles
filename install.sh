@@ -20,8 +20,7 @@ function brew_install {
 # rm -rf $HOME/.zshenv
 # rm -rf $HOME/.gitconfig
 
-ln -sfnv $ZSHPATH/.zshenv $HOME/.zshenv &&
-ln -sfnv $ZSHPATH/.zshrc $HOME/.zshrc &&
-ln -sfnv $PROJECT/dotfiles/git/.gitconfig ~/.gitconfig
-ln -sfnv $PROJECT/dotfiles/config/starship.toml ~/.config/starship.toml
-ln -sfnv $PROJECT/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
+ln -sfnv /Users/paulopereira/Projects/dotfiles/zsh/.zshrc /Users/paulopereira/.zshrc &&
+ln -sfnv /Users/paulopereira/Projects/dotfiles/git/.gitconfig ~/.gitconfig
+ln -sfnv /Users/paulopereira/Projects/dotfiles/config/starship.toml ~/.config/starship.toml
+ln -sfnv /Users/paulopereira/Projects/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
