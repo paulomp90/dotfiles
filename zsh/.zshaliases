@@ -62,5 +62,4 @@ alias gstp='git stash pop'
 
 
 # Folders alias
-alias per='cd ~/Projects/personal'
-alias dot='cd ~/Projects/personal/dotfiles'
+alias dot='cd ~/Projects/dotfiles'
