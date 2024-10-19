@@ -19,9 +19,12 @@ function brew_install {
 ln -sfnv /Users/paulopereira/Projects/dotfiles/zsh/.zshrc /Users/paulopereira/.zshrc
 ln -sfnv /Users/paulopereira/Projects/dotfiles/git/.gitconfig ~/.gitconfig
 
-ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/kitty.conf ~/.config/kitty/kitty.conf
+# ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/kitty.conf ~/.config/kitty/kitty.conf
+# ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/scroll_mark.py ~/.config/kitty/scroll_mark.py
+# ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/search.py ~/.config/kitty/search.py
 ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/karabiner ~/.config/karabiner
 ln -sfnv /Users/paulopereira/Projects/dotfiles/.config/raycast ~/.config/raycast
 
 ln -sfnv /Users/paulopereira/Projects/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -sfnv /Users/paulopereira/Projects/dotfiles/config/.asdfrc ~/.asdfrc
+ln -sfnv /Users/paulopereira/Projects/dotfiles/config/.wezterm.lua ~/.wezterm.lua

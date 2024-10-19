@@ -72,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* SYM
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |   !  |   "@ |  €#  |  $   |  %   |                    |      |      |      |      |      |      |
+    * |      |   !  |   "  |  #   |  $   |  %   |                    |      |   ^  |   `  |   ´  |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |   &  |   /  |  (   |  )   |  =   |                    |  ºª  | GUI  | SHIFT| ALT  | CTRL |      |
+    * |      |   &  |   /  |  (   |  )   |  =   |                    |   ~  |   {  |  }   |   <  |   >  |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |  '?  |  \|  |  [{  |  }]  |  <>  |-------.     ,------|      |   ~  |   ^  |   ´  |  `   |      |
+    * |      |   ?  |   \  |  [   |   ]  |  |   |-------.     ,------|   '  |      |      |  º   |  ª   |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
     *                          |      |      |/ NUM   /         \      \ |      |      |
@@ -84,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *
     */
     [_SYM] = LAYOUT(
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                    XXXXXXX,    XXXXXXX,       XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX,
-        _______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5),                    XXXXXXX,    XXXXXXX,       XXXXXXX, XXXXXXX,       XXXXXXX, _______,
-        _______, LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),                    KC_LBRC,    KC_RGUI,       KC_RSFT, KC_RALT,       KC_RCTL, _______,
-        _______,    KC_MINS,    KC_BSLS, LALT(KC_8), LALT(KC_9),     KC_GRV,  XXXXXXX, XXXXXXX, XXXXXXX,    KC_QUOT, LSFT(KC_QUOT), KC_RBRC, LSFT(KC_RBRC), _______,
+        XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,       XXXXXXX,                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX, XXXXXXX,
+        _______,   LSFT(KC_1), LSFT(KC_2),   LSFT(KC_3), LSFT(KC_4),    LSFT(KC_5),                    XXXXXXX, LSFT(KC_QUOT),       KC_RBRC, LSFT(KC_RBRC),       XXXXXXX, _______,
+        _______,   LSFT(KC_6), LSFT(KC_7),   LSFT(KC_8), LSFT(KC_9),    LSFT(KC_0),                    KC_QUOT,     LSA(KC_8),     LSA(KC_9),        KC_GRV,  LSFT(KC_GRV), _______,
+        _______,LSFT(KC_MINS),    KC_BSLS,   LALT(KC_8), LALT(KC_9), LSFT(KC_BSLS),  XXXXXXX, XXXXXXX, KC_MINS,       XXXXXXX,       XXXXXXX, LSFT(KC_LBRC),       KC_LBRC, _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
         _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_BRIU,                    TG(_GAME), KC_MPRV, KC_MPLY, KC_MNXT,  KC_F11, _______,
-        _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_BRID,  XXXXXXX, XXXXXXX,   XXXXXXX, KC_VOLU, KC_MUTE, KC_VOLD,  KC_F12, _______,
+        _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_BRID,  XXXXXXX, XXXXXXX,   XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU,  KC_F12, _______,
                                     XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
