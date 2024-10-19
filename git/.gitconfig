@@ -1,6 +1,8 @@
-[user]
-	name = Paulo Pereira
-	email = email
+# to test the include use the command:
+# git config --global --includes user.email
+
+[include]
+	path = ~/.gitconfig.local
 
 [alias]
 	br = !git --no-pager branch
