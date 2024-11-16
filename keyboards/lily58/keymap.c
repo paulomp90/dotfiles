@@ -17,18 +17,18 @@
 #include QMK_KEYBOARD_H
 
 // Left-hand home row mods
-#define CTL_A LCTL_T(KC_A)
+#define GUI_A LGUI_T(KC_A)
 #define ALT_S LALT_T(KC_S)
-#define SHIFT_D LSFT_T(KC_D)
-#define GUI_F LGUI_T(KC_F)
+#define CTL_D LCTL_T(KC_D)
+#define SFT_F LSFT_T(KC_F)
 
 #define CT LCTL_T(KC_TAB)
 
 // Right-hand home row mods
-#define GUI_J RGUI_T(KC_J)
-#define SHIFT_K RSFT_T(KC_K)
+#define GUI_SCLN RGUI_T(KC_SCLN)
 #define ALT_L RALT_T(KC_L)
-#define CTL_SCLN RCTL_T(KC_SCLN)
+#define CTL_K RCTL_T(KC_K)
+#define SFT_J RSFT_T(KC_J)
 
 // #define NUM_ENT LT(_NUM, KC_ENT)
 #define NUM_SPACE LT(_NUM, KC_SPC)
@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |  ESC |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | REP  |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |  CT  |CTL_A |ALT_S |SHIFTD|GUI_F |   G  |                    |   H  |GUI_J |SHIFTK|ALT_L | CTL_Ç|BK_DEL|
+    * |  CT  |GUI_A |ALT_S |CTL_D |SFT_F |   G  |                    |   H  |SFT_J |SHIFTK|ALT_L | CTL_Ç|BK_DEL|
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * | SHIFT|   Z  |   X  |   C  |   V  |   B  |-------.     ,------|   N  |   M  |  ,;  |   .: |  _-  |SHIFT |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
          KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,     KC_P, QK_REPEAT_KEY,
-             CT,   CTL_A,   ALT_S, SHIFT_D,   GUI_F,     KC_G,                       KC_H,   GUI_J, SHIFT_K,   ALT_L, CTL_SCLN, KC_BSPC,
+             CT,   GUI_A,   ALT_S,   CTL_D,   SFT_F,     KC_G,                       KC_H,   SFT_J,   CTL_K,   ALT_L, GUI_SCLN, KC_BSPC,
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,     KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
                                 // XXXXXXX, MO(_ADJ), MO(_NAV),  KC_SPC,  NUM_ENT, MO(_SYM), KC_RGUI, XXXXXXX
                                    XXXXXXX, KC_LGUI, MO(_SYM), NUM_SPACE,  KC_ENT, MO(_NAV), MO(_ADJ), XXXXXXX
