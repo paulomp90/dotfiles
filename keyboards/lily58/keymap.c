@@ -86,32 +86,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYM] = LAYOUT(
         XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,       XXXXXXX,                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX, XXXXXXX,
         _______,   LSFT(KC_1), LSFT(KC_2),   LSFT(KC_3), LSFT(KC_4),    LSFT(KC_5),                    XXXXXXX, LSFT(KC_QUOT),       KC_RBRC, LSFT(KC_RBRC),       XXXXXXX, _______,
-        _______,   LSFT(KC_6), LSFT(KC_7),   LSFT(KC_8), LSFT(KC_9),    LSFT(KC_0),                    KC_QUOT,     LSA(KC_8),     LSA(KC_9),        KC_GRV,  LSFT(KC_GRV), _______,
+        _______,   LSFT(KC_6), LSFT(KC_7),   LSFT(KC_8), LSFT(KC_9),    LSFT(KC_0),                    KC_QUOT,     LSA(KC_8),     LSA(KC_9),       KC_NUBS, LSFT(KC_NUBS), _______,
         _______,LSFT(KC_MINS),    KC_BSLS,   LALT(KC_8), LALT(KC_9), LSFT(KC_BSLS),  XXXXXXX, XXXXXXX, KC_MINS,       XXXXXXX,       XXXXXXX, LSFT(KC_LBRC),       KC_LBRC, _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
     /* NAV
     * ,-----------------------------------------.                    ,-----------------------------------------.
-    * |      |      |      |      |      |      |                    | PGUP | Home |  Up  | End  |      |      |
+    * |      |      |      |      |      |      |                    |      | Home |  Up  | End  | PGUP |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |                    | PGDN | Left | Down |Right |      |      |
+    * |      | GUI  | ALT  | CTRL | SHIFT|      |                    |  WS  | Left | Down |Right | PGDN |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |      |      |      |      |      |-------.     ,------|  WS  | SWL  |      | SWR  |      |      |
+    * |      |      |      |      |      |      |-------.     ,------| REDO |PASTE | COPY | CUT  | UNDO |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
     *                          | LGUI | SYM  | /Space  /       \Enter \  | NAV  |  ADJ |
-    *                          |      |      |/ NUM   /         \      \ |      |      |
     *                          '-------------''------'           '------''-------------'
     *
     *  WS (Window Switch in same app, mac usage)
-    *  SW (Select Word) - Left and Right
     */
 
     [_NAV] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX,      XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,
-        _______,    _______,    _______,    _______,    _______,   _______,                         KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
-        _______,    KC_RGUI,    KC_RALT,    KC_RCTL,    KC_LSFT,   _______,                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
-        _______, LSFT(KC_Z), LSFT(KC_X), LSFT(KC_C), LSFT(KC_V), LSA(KC_Z), XXXXXXX, XXXXXXX, LGUI(KC_RBRC), LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   XXXXXXX,                         KC_PGUP, KC_HOME,   KC_UP,  KC_END, KC_PGUP, _______,
+        _______,    KC_RGUI,    KC_RALT,    KC_RCTL,    KC_LSFT,   _______,                   LGUI(KC_RBRC), KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
+        _______, LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), LSG(KC_Z), XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                                                  XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
@@ -120,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |      |  1   |  2   |  3   |  4   |   5  |                    |      |      |      |      |      |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |      |  6   |  7   |  8   |  9   |   0  |                    |      | GUI  | SHIFT| ALT  | CTRL |      |
+    * |      |  6   |  7   |  8   |  9   |   0  |                    |      |SHIFT | CTRL | ALT  |  GUI |      |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * |      |  +   |  -   |  *   |  /   |   .  |-------.     ,------|      |      |      |      |      |      |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
