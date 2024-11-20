@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX,      XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, _______, _______, _______, _______, _______,                         KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
-        _______, _______, _______, _______, _______, _______,                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
-        _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, LGUI(KC_RBRC), LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
-                                   XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
+        _______,    _______,    _______,    _______,    _______,   _______,                         KC_PGUP,      KC_HOME,   KC_UP,       KC_END, XXXXXXX, _______,
+        _______,    KC_RGUI,    KC_RALT,    KC_RCTL,    KC_LSFT,   _______,                         KC_PGDN,      KC_LEFT, KC_DOWN,      KC_RGHT, XXXXXXX, _______,
+        _______, LSFT(KC_Z), LSFT(KC_X), LSFT(KC_C), LSFT(KC_V), LSA(KC_Z), XXXXXXX, XXXXXXX, LGUI(KC_RBRC), LSA(KC_LEFT), XXXXXXX, LSA(KC_RGHT), XXXXXXX, _______,
+                                                 XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
     /* NUM
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,    XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______,    KC_1,    KC_2,         KC_3,       KC_4,    KC_5,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-        _______,    KC_6,    KC_7,         KC_8,       KC_9,    KC_0,                   XXXXXXX, KC_RGUI, KC_RSFT, KC_RALT, KC_RCTL, _______,
+        _______,    KC_6,    KC_7,         KC_8,       KC_9,    KC_0,                   XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, _______,
         _______,  KC_EQL, KC_SLSH, LSFT(KC_EQL), LSFT(KC_7),  KC_DOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                                                          XXXXXXX, _______, _______, _______, _______,  _______, _______, XXXXXXX
     ),
