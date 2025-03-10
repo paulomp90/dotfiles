@@ -24,8 +24,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 eval $(/opt/homebrew/bin/brew shellenv)
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 ####### ZSH Useful Functions
 source "$ZSHPATH/zsh-functions"
 
@@ -82,8 +80,6 @@ eval "$(fzf --zsh)"
 #-------------------------
 eval "$(starship init zsh)"
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
@@ -95,3 +91,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 # zsh-syntax-highlight
 # ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red"
 # ZSH_HIGHLIGHT_STYLES[path]="none"
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+. "$HOME/.local/bin/env"
+eval "$(uv generate-shell-completion zsh)"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"

@@ -96,8 +96,9 @@ config = {
     keys = {
         -- { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
 	    -- { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
-        { key = 'v', mods = "CTRL", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-        { key = "h", mods = "CTRL", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+        { key = 's', mods = "CTRL|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+        { key = "s", mods = "CTRL", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+
         { key = "w", mods = "CTRL|SHIFT", action = act.CloseCurrentTab({ confirm = false }) },
         { key = "w", mods = "CTRL", action = act.CloseCurrentPane({ confirm = false }) },
 		{ key = 'w', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment },
@@ -106,8 +107,14 @@ config = {
 		-- Cycle to the previous pane
 		{ key="j", mods="CTRL", action=wezterm.action{ActivatePaneDirection="Prev"}},
 
-        -- { key = "c", mods = "CTRL", action = act.CloseCurrentPane({ confirm = false }) },
 
+        -- taken from https://github.com/KevinSilvester/wezterm-config --
+        -- cursor movement --
+        { key = 'LeftArrow',  mods = 'CMD',     action = act.SendString '\u{1b}OH' },
+        { key = 'RightArrow', mods = 'CMD',     action = act.SendString '\u{1b}OF' },
+
+        -- clear line --
+        { key = 'Backspace',  mods = 'CMD',     action = act.SendString '\u{15}' },
     },
 
     -- Tab/Status Bar

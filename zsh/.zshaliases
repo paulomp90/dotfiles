@@ -6,12 +6,12 @@ alias reload="source ~/.zshrc"
 # alias pwd="pwd && pwd | pbcopy"
 
 alias ..='cd ..'
-alias o='open'
 alias c='clear'
 alias cat="bat"
 alias ls='eza --all --group-directories-first'
 alias ll='eza --long --all --group-directories-first'
 alias tree='eza --tree'
+alias dc='docker compose'
 
 alias which-command=whence
 alias grep='grep --color=auto'
