@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "keymap_portuguese_mac_iso.h"
 
 // Left-hand home row mods
 #define GUI_A LGUI_T(KC_A)

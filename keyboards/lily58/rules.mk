@@ -19,6 +19,7 @@ TAP_DANCE_ENABLE = no
 TRI_LAYER_ENABLE = yes
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight.
+OS_DETECTION_ENABLE = yes
 
 SRC +=  ./lib/rgb_state_reader.c \
         ./lib/layer_state_reader.c \
