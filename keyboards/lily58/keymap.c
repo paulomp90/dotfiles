@@ -30,7 +30,6 @@
 #define CTL_K RCTL_T(KC_K)
 #define SFT_J RSFT_T(KC_J)
 
-// #define NUM_ENT LT(_NUM, KC_ENT)
 #define NUM_SPACE LT(_NUM, KC_SPC)
 
 
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------.                    ,-----------------------------------------.
     * |  ESC |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | REP  |
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    * |  CT  |GUI_A |ALT_S |CTL_D |SFT_F |   G  |                    |   H  |SFT_J |GUI_K |ALT_L | CTL_Ç|BK_DEL|
+    * |  CT  |GUI_A |ALT_S |CTL_D |SFT_F |   G  |                    |   H  |SFT_J |CTL_K |ALT_L | GUI_Ç|BK_DEL|
     * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
     * | SHIFT|   Z  |   X  |   C  |   V  |   B  |-------.     ,------|   N  |   M  |  ,;  |   .: |  _-  |SHIFT |
     * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -62,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *
     */
     [_QWERTY] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-         KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,                       KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, QK_REPEAT_KEY,
-             CT,   GUI_A,   ALT_S,   CTL_D,   SFT_F,     KC_G,                       KC_H,   SFT_J, GUI_SCLN,   ALT_L,   CTL_K, KC_BSPC,
-        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,     KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
+         KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,     KC_P, QK_REPEAT_KEY,
+             CT,   GUI_A,   ALT_S,   CTL_D,   SFT_F,     KC_G,                       KC_H,   SFT_J,   CTL_K,   ALT_L, GUI_SCLN, KC_BSPC,
+        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,     KC_B, XXXXXXX,  XXXXXXX,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
                                    XXXXXXX, KC_LGUI, MO(_SYM), NUM_SPACE,  KC_ENT, MO(_NAV), MO(_ADJ), XXXXXXX
     ),
 
@@ -83,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *
     */
     [_SYM] = LAYOUT(
-        XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,       XXXXXXX,                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX, XXXXXXX,
-        _______,   LSFT(KC_1), LSFT(KC_2),   LSFT(KC_3), LSFT(KC_4),    LSFT(KC_5),                    XXXXXXX, LSFT(KC_QUOT),       KC_RBRC, LSFT(KC_RBRC),       XXXXXXX, _______,
-        _______,   LSFT(KC_6), LSFT(KC_7),   LSFT(KC_8), LSFT(KC_9),    LSFT(KC_0),                    KC_QUOT,     LSA(KC_8),     LSA(KC_9),       KC_NUBS, LSFT(KC_NUBS), _______,
-        _______,LSFT(KC_MINS),    KC_BSLS,   LALT(KC_8), LALT(KC_9), LSFT(KC_BSLS),  XXXXXXX, XXXXXXX, KC_MINS,       XXXXXXX,       XXXXXXX, LSFT(KC_LBRC),       KC_LBRC, _______,
+        XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,       XXXXXXX,                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,     XXXXXXX, XXXXXXX,
+        _______,   LSFT(KC_1), LSFT(KC_2),   LSFT(KC_3), LSFT(KC_4),    LSFT(KC_5),                    XXXXXXX, LSFT(KC_QUOT),       KC_RBRC, LSFT(KC_RBRC),     XXXXXXX, _______,
+        _______,   LSFT(KC_6), LSFT(KC_7),   LSFT(KC_8), LSFT(KC_9),    LSFT(KC_0),                    KC_QUOT,     LSA(KC_8),     LSA(KC_9),       KC_GRV, LSFT(KC_GRV), _______,
+        _______,LSFT(KC_MINS),    KC_BSLS,   LALT(KC_8), LALT(KC_9), LSFT(KC_BSLS),  XXXXXXX, XXXXXXX, KC_MINS,       XXXXXXX,       XXXXXXX, LSFT(KC_LBRC),     KC_LBRC, _______,
                                         XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX
     ),
 
@@ -227,7 +226,20 @@ const char *read_keylog(void);
 const char *read_keylogs(void);
 
 void oled_render_layer_state(void) {
+    #if defined(OS_DETECTION_ENABLE)
+    os_variant_t host = detected_host_os();
+
+    oled_write_P(PSTR("OS: "), false);
+
+    if (host == OS_MACOS || host == OS_IOS) {
+        oled_write_ln_P(PSTR("Mac"), false);
+    } else if (host == OS_WINDOWS) {
+        oled_write_ln_P(PSTR("Win"), false);
+    }
+    #endif
+
     oled_write_P(PSTR("Layer: "), false);
+
     switch (get_highest_layer(layer_state)) {
         case 0:
             oled_write_ln_P(PSTR("Default"), false);
@@ -255,7 +267,7 @@ void oled_render_layer_state(void) {
 
 void oled_render_caps_state(void) {
     // Set cursor position
-    oled_set_cursor(0, 1);
+    //oled_set_cursor(0, 1);
 
     // Caps lock status
     led_t led_state = host_keyboard_led_state();
