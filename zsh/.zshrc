@@ -7,14 +7,16 @@ export LANG=en_US.UTF-8
 unsetopt BEEP
 
 ####### History
-# Share history between all sessions.
-setopt SHARE_HISTORY
+HISTSIZE=100000          # commands kept in memory for current session
+SAVEHIST=100000          # commands saved to history file
+HISTFILE=~/.zsh_history  # location (default is fine)
 
-# Hist to ignore duplications
-setopt HIST_IGNORE_DUPS
-
-# Remove duplicates first when HISTSIZE is met
-setopt hist_expire_dups_first
+setopt APPEND_HISTORY        # append, don't overwrite
+setopt INC_APPEND_HISTORY    # write as commands run, not just on exit
+setopt SHARE_HISTORY         # share history across sessions
+setopt HIST_IGNORE_DUPS      # don't record consecutive dupes
+setopt HIST_IGNORE_ALL_DUPS  # remove older dupes
+setopt HIST_REDUCE_BLANKS    # trim extra whitespace
 
 autoload -U compinit; compinit
 
