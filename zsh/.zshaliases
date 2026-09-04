@@ -41,8 +41,7 @@ alias gl='git pull'
 alias gm='git merge'
 
 alias gundo="git reset --soft HEAD~"
-alias gr='git restore'
-alias gra='git restore .'
+alias gra='git restore .; git clean -f'
 alias grs='git restore --staged'
 
 alias grb='git rebase'
