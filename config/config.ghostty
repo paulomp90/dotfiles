@@ -1,28 +1,34 @@
-background = #122738
-foreground = #ffffff
+#background = #122738
+#foreground = #ffffff
 
-cursor-color = #ffffff
-cursor-text = #122738
+#cursor-color = #ffffff
+#cursor-text = #122738
 
-selection-background = #0050a4
-selection-foreground = #ffffff
+#selection-background = #0050a4
+#selection-foreground = #ffffff
 
-palette = 0=#000000
-palette = 1=#ff628c
-palette = 2=#3ad900
-palette = 3=#ffc600
-palette = 4=#0088ff
-palette = 5=#fb94ff
-palette = 6=#80fcff
-palette = 7=#ffffff
-palette = 8=#0050a4
-palette = 9=#ff628c
-palette = 10=#3ad900
-palette = 11=#ffc600
-palette = 12=#0088ff
-palette = 13=#fb94ff
-palette = 14=#80fcff
-palette = 15=#ffffff
+#palette = 0=#000000
+#palette = 1=#ff628c
+#palette = 2=#3ad900
+#palette = 3=#ffc600
+#palette = 4=#0088ff
+#palette = 5=#fb94ff
+#palette = 6=#80fcff
+#palette = 7=#ffffff
+#palette = 8=#0050a4
+#palette = 9=#ff628c
+#palette = 10=#3ad900
+#palette = 11=#ffc600
+#palette = 12=#0088ff
+#palette = 13=#fb94ff
+#palette = 14=#80fcff
+#palette = 15=#ffffff
+
+#split-divider-color = 0050a4
+
+theme = Ayu
+
+split-divider-color = E89D37
 
 font-family = JetBrains Mono NL
 font-size = 15
@@ -34,3 +40,7 @@ keybind = ctrl+i=goto_split:up
 keybind = ctrl+k=goto_split:down
 
 confirm-close-surface = always
+
+window-padding-x = 8
+window-padding-y = 4
+window-padding-balance = true
