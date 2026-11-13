@@ -1,0 +1,32 @@
+# herdr config
+onboarding = false
+
+[ui]
+status_indicators = "symbols"
+prompt_new_tab_name = false
+
+[keys]
+
+# General
+prefix = "ctrl+space"
+settings = "cmd+,"
+detach = "prefix+d"
+reload_config = "prefix+r"
+goto = "cmd+g"
+workspace_picker = "alt+w"
+split_vertical = "cmd+d"
+split_horizontal = "cmd+shift+d"
+
+# Navigation
+focus_agent = "cmd+alt+1..9"
+switch_tab = "cmd+1..9"
+switch_workspace = "alt+1..9"
+last_pane = "alt+tab"
+previous_workspace = "cmd+alt+left"
+next_workspace = "cmd+alt+right"
+
+# Workspace and tab management
+rename_workspace = "alt+r"
+new_tab = "cmd+t"
+rename_tab = "cmd+r"
+close_pane = "cmd+w"
