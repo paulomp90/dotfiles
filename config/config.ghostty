@@ -26,7 +26,7 @@
 
 #split-divider-color = 0050a4
 
-theme = Ayu
+theme = Dracula+
 
 split-divider-color = E89D37
 
@@ -34,13 +34,45 @@ font-family = JetBrains Mono NL
 font-size = 15
 bell-features = no-audio
 
-keybind = ctrl+j=goto_split:left
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+i=goto_split:up
-keybind = ctrl+k=goto_split:down
+#keybind = ctrl+j=goto_split:left
+#keybind = ctrl+l=goto_split:right
+#keybind = ctrl+i=goto_split:up
+#keybind = ctrl+k=goto_split:down
 
 confirm-close-surface = always
 
 window-padding-x = 8
 window-padding-y = 4
 window-padding-balance = true
+
+keybind = cmd+shift+t=new_tab
+keybind = cmd+t=unbind
+keybind = cmd+w=unbind
+
+# Free cmd+1..9 so they reach herdr (covers both codepoint and digit-key forms)
+keybind = super+1=unbind
+keybind = super+digit_1=unbind
+keybind = super+2=unbind
+keybind = super+digit_2=unbind
+keybind = super+3=unbind
+keybind = super+digit_3=unbind
+keybind = super+4=unbind
+keybind = super+digit_4=unbind
+keybind = super+5=unbind
+keybind = super+digit_5=unbind
+keybind = super+6=unbind
+keybind = super+digit_6=unbind
+keybind = super+7=unbind
+keybind = super+digit_7=unbind
+keybind = super+8=unbind
+keybind = super+digit_8=unbind
+keybind = super+9=unbind
+keybind = super+digit_9=unbind
+keybind = super+2=unbind
+keybind = super+3=unbind
+keybind = super+4=unbind
+keybind = super+5=unbind
+keybind = super+6=unbind
+keybind = super+7=unbind
+keybind = super+8=unbind
+keybind = super+9=unbind
